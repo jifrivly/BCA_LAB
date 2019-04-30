@@ -1,0 +1,48 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+class Student
+{
+int admno;
+char name[50],course[50];
+public:
+void read();
+void print();
+};
+void Student::read()
+{
+cout<<"Enter admission number:";
+cin>>admno;
+cout<<"Enter student name:";
+gets(name);
+cout<<"Enter course:";
+gets(course);
+}
+void Student::print()
+{
+cout<<"Admission number:"<<admno<<endl;
+cout<<"Name:"<<name<<endl;
+cout<<"Course:"<<course<<endl;
+}
+void main()
+{
+clrscr();
+Student s[25];
+int n;
+cout<<"Enter no of students:";
+cin>>n;
+for(int i=0;i<n;i++)
+{
+cout<<"Enter details of student "<<i+1<<endl;
+s[i].read();
+}
+cout<<"\nStudent Details\n";
+for(i=0;i<n;i++)
+{
+cout<<"Student "<<i+1<<endl;
+s[i].print();
+}
+getch();
+}

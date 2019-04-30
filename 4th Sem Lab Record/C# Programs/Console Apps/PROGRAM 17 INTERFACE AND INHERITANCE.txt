@@ -1,0 +1,66 @@
+13. Create an interface Library with the following member function GetDetails and DispDetails .
+Create two classes Books and Digital inherit from the interface Library
+
+using System;
+namespace InterfaceApp
+{
+    public interface Library
+    {
+        void getdetails();
+        void dispdetails();
+    }
+    class Book : Library
+    {
+        int total, current;
+        public void getdetails()
+        {
+            Console.Write("Enter total no. of books:");
+            total = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter no. of books available:");
+            current = Convert.ToInt32(Console.ReadLine());
+        }
+        public void dispdetails()
+        {
+            Console.WriteLine("Total no. of books:{0}", total);
+            Console.WriteLine("No of books available:{0}", current);
+            Console.WriteLine("No of books issued:{0}", total - current);
+        }
+
+    }
+    class Digital : Library
+    {
+        int total, current;
+        public void getdetails()
+        {
+            Console.Write("Enter total no. of resources:");
+            total = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter no. of resources available:");
+            current = Convert.ToInt32(Console.ReadLine());
+
+        }
+        public void dispdetails()
+        {
+            Console.WriteLine("Total no. of resources:{0}", total);
+            Console.WriteLine("No of resources available:{0}", current);
+            Console.WriteLine("No of resources issued:{0}", total - current);
+        }
+    }
+
+    class InterfaceTester
+    {
+        static void Main(string[] args)
+        {
+            Book b = new Book();
+            Digital d = new Digital();
+            Console.WriteLine("Enter details of Books section");
+            b.getdetails();
+            Console.WriteLine("\nDetails of Books section\n");
+            b.dispdetails();
+            Console.WriteLine("\nEnter details of Digital section");
+            d.getdetails();
+            Console.WriteLine("\nDetails of Digital section\n");
+            d.dispdetails();
+            Console.ReadKey();
+        }
+    }
+}

@@ -1,0 +1,78 @@
+19. Format a label control's font style using checkboxes
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace FontStyleChanger
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label3.Text = (textBox1.Text).ToString();
+            
+        }
+
+        private void ckbxbold_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbxbold.Checked)
+            {
+                label3.Font = new Font(label3.Font, FontStyle.Bold);
+            }
+            else
+            {
+                label3.Font = new Font(label3.Font, FontStyle.Regular);
+            }
+
+        }
+
+        private void ckbxitalic_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbxitalic.Checked)
+            {
+                label3.Font = new Font(label3.Font, FontStyle.Italic);
+            }
+            else
+            {
+                label3.Font = new Font(label3.Font, FontStyle.Regular);
+            }
+        }
+
+        private void ckbxunder_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbxunder.Checked)
+            {
+                label3.Font = new Font(label3.Font, FontStyle.Underline);
+            }
+            else
+            {
+                label3.Font = new Font(label3.Font, FontStyle.Regular);
+            }
+        }
+
+        private void ckbxstrike_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbxstrike.Checked)
+            {
+                label3.Font = new Font(label3.Font, FontStyle.Strikeout);
+            }
+            else
+            {
+                label3.Font = new Font(label3.Font, FontStyle.Regular);
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+3. Write a program to find the sum of two times. Using operator overloading (+).
+
+using System;
+namespace Time
+{
+    class Time
+    {
+        int hours, minutes, seconds;
+        public void gettime()
+        {
+            Console.WriteLine("Enter hours,minutes,seconds:");
+            hours = Convert.ToInt32(Console.ReadLine());
+            minutes = Convert.ToInt32(Console.ReadLine());
+            seconds = Convert.ToInt32(Console.ReadLine());
+        }
+        public static Time operator +(Time ob1, Time ob2)
+        {
+            Time ob = new Time();
+            ob.hours = ob1.hours + ob2.hours;
+            ob.minutes = ob1.minutes + ob2.minutes;
+            ob.seconds = ob1.seconds + ob2.seconds;
+            ob.minutes = ob.minutes + (ob.seconds / 60);
+            ob.seconds = ob.seconds % 60;
+            ob.hours = ob.hours + ob.minutes / 60;
+            ob.minutes = ob.minutes % 60;
+            return ob;
+        }
+        public void display()
+        {
+            Console.Write("Hours:{0}\tMinutes:{1}\tSeconds:{2}", hours, minutes, seconds);
+        }
+
+    }
+    class TimeOperation
+    {
+        static void Main(string[] args)
+        {
+            Time t1 = new Time();
+            Time t2 = new Time();
+            Time t3 = new Time();
+            Console.WriteLine("Enter time 1");
+            t1.gettime();
+            Console.WriteLine("Enter time 2");
+            t2.gettime();
+            t3 = t1 + t2;
+            Console.Write("Time 1 + Time 2 : ");
+            t3.display();
+            Console.ReadKey();
+        }
+    }
+}

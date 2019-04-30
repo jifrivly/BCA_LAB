@@ -1,0 +1,57 @@
+21. Design a Windows application to Add and remove inventory details using TreeView Control.
+Root Node is “Inventory” and Leve1 display different category of Product and level 2 Display
+different products under various categories.
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace TreeView
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            
+        }
+
+        public void Form1_Load(object sender, EventArgs e)
+        {
+            TreeNode root = new TreeNode("Inventory");
+            treeView1.Nodes.Add(root);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int i;
+            TreeNode child1 = new TreeNode(textBox2.Text);
+            TreeNode child2 = new TreeNode(textBox1.Text);
+            for (i = 0; i < treeView1.Nodes[0].Nodes.Count; i++)
+            {
+                if (treeView1.Nodes[0].Nodes[i].Text == child1.Text)
+                {
+                    break;
+                }
+            }
+            if (i >= treeView1.Nodes[0].Nodes.Count)
+            {
+                treeView1.Nodes[0].Nodes.Add(child1);
+            }
+            treeView1.Nodes[0].Nodes[i].Nodes.Add(child2);
+            textBox1.Text = "";
+            textBox2.Text = "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            treeView1.Nodes.Remove(treeView1.SelectedNode);
+        }
+    }
+}

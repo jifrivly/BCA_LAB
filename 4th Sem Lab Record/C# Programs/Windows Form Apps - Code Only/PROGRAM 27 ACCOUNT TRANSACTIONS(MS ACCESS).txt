@@ -1,0 +1,81 @@
+27. Create a table account in MS-Access with the following fields’ accno, amount. Add some records
+in it. Design a form to deposit and withdrawal of amount.
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.OleDb;
+namespace BankingSystem
+{
+    public partial class Form1 : Form
+    {
+        OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\HOME\Documents\Account.accdb");
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            comboBox1.Items.Add("Deposit");
+            comboBox1.Items.Add("Withdraw");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("select Amount from Account where Accno='" + textBox1.Text + "'", con);
+            OleDbDataReader rdr;
+            double amt;
+            if (comboBox1.Text == "Deposit")
+            {
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    amt = Convert.ToDouble(rdr[0]);
+                    amt = amt + Convert.ToDouble(textBox2.Text);
+                    OleDbCommand cmd1 = new OleDbCommand("update Account set Amount='" + amt + "'", con);
+                    cmd1.ExecuteNonQuery();
+                    MessageBox.Show("Balace Updated");
+                }
+                else
+                {
+                    MessageBox.Show("No account found");
+                }
+            }
+            else if (comboBox1.Text == "Withdraw")
+            {
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    amt = Convert.ToDouble(rdr[0]);
+                    if (amt >= Convert.ToDouble(textBox2.Text))
+                    {
+                        amt = amt - Convert.ToDouble(textBox2.Text);
+                        OleDbCommand cmd1 = new OleDbCommand("update Account set Amount='" + amt + "'", con);
+                        cmd1.ExecuteNonQuery();
+                        MessageBox.Show("Balace Updated");
+                    }
+                    else
+                    {
+                        MessageBox.Show("You dont have sufficient balance");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No account found");
+                }
+            }
+            
+            con.Close();
+        }
+
+        
+    }
+}

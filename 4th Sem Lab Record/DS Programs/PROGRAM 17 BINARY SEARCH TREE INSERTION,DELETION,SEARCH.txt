@@ -1,0 +1,190 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO IMPLEMENT BINARY SEARCH TREE
+
+#include<iostream.h>
+#include<conio.h>
+struct node
+{
+node *left;
+int data;
+node *right;
+}*root,*current,*tmp,*parent;
+void insert(int);
+int search(int);
+void deletenode();
+void inorder(node *);
+void main()
+{
+clrscr();
+int size,i,value,selection;
+cout<<"Enter no. of values:";
+cin>>size;
+for(i=0;i<size;i++)
+{
+cout<<"Enter data "<<i+1<<":";
+cin>>value;
+insert(value);
+}
+do
+{
+cout<<"1.Search\n2.Delete\n3.Traverse\n4.Exit\nSelect One:";
+cin>>selection;
+switch(selection)
+{
+case 1:cout<<"Enter value:";
+cin>>value;
+if(search(value))
+{
+cout<<"Value found\n";
+}
+break;
+case 2:cout<<"Enter value:";
+cin>>value;
+if(search(value))
+{
+deletenode();
+cout<<"Value deleted\n";
+}
+break;
+case 3:inorder(root);
+cout<<"\n";
+break;
+default:break;
+}
+}while(selection!=4);
+delete tmp;
+delete root;
+delete current;
+delete parent;
+getch();
+}
+void insert(int value)
+{
+tmp=new node;
+tmp->data=value;
+if(root==NULL)
+{
+root=tmp;
+}
+else
+{
+current=root;
+while(current!=NULL)
+{
+parent=current;
+if(value>(current->data))
+{
+current=(current->right);
+}
+else
+{
+current=(current->left);
+}
+}
+if(value<(parent->data))
+{
+parent->left=tmp;
+}
+else
+{
+parent->right=tmp;
+}
+}
+}
+int search(int item)
+{
+if(root==NULL)
+{
+cout<<"Underflow\n";
+return 0;
+}
+else
+{
+parent=current=root;
+while(current!=NULL)
+{
+if(current->data==item)
+{
+return 1;
+}
+parent=current;
+if(item<(current->data))
+{
+current=current->left;
+}
+else
+{
+current=current->right;
+}
+}
+if(current==NULL)
+{
+cout<<"Value not found\n";
+return 0;
+}
+}
+}
+void inorder(node *n)
+{
+if(n->left!=NULL)
+{
+inorder(n->left);
+}
+cout<<n->data<<"\t";
+if(n->right!=NULL)
+{
+inorder(n->right);
+}
+}
+void deletenode()
+{
+int min;
+if((current->left==NULL)&&(current->right==NULL))
+{
+if(parent->left==current)
+{
+parent->left=NULL;
+}
+else
+{
+parent->right=NULL;
+}
+}
+else if((current->left!=NULL)&&(current->right!=NULL))
+{
+parent=current;
+node *small=current->right;
+while(small->left!=NULL)
+{
+parent=small;
+small=small->left;
+}
+current->data=small->data;
+current=small;
+deletenode();
+}
+else if((current->right!=NULL)&&(current->left==NULL))
+{
+if(parent->right==current)
+{
+parent->right=current->right;
+}
+else
+{
+parent->left=current->right;
+}
+}
+else
+{
+if(parent->right==current)
+{
+parent->right=current->left;
+}
+else
+{
+parent->left=current->left;
+}
+}
+}
+
+

@@ -1,0 +1,41 @@
+8. Write a program to display nth Fibonacci number using recursion
+
+
+using System;
+namespace fibanocci
+{
+    class fibanocci
+    {
+        int a = 0, b = 1, c;
+        public int fiban(int n)
+        {
+            if (n == 1)
+            {
+                return a;
+            }
+            else if (n == 2)
+            {
+                return b;
+            }
+            else
+            {
+                c = a + b;
+                a = b;
+                b = c;
+                return fiban(n - 1);
+            }
+        }
+    }
+    class fiban
+    {
+        static void Main(string[] args)
+        {
+            int n;
+            fibanocci obj = new fibanocci();
+            Console.Write("Enter the value for n:");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Fibanooci number is = {0}", obj.fiban(n));
+            Console.ReadKey();
+        }
+    }
+}

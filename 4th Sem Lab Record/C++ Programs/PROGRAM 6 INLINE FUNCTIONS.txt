@@ -1,0 +1,35 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+#include<iostream.h>
+#include<conio.h>
+inline void rectangle(int,int);
+inline void square(float);
+inline void triangle(float,float);
+void main()
+{
+clrscr();
+int length,breadth;
+float side,base,height;
+cout<<"Enter length and breadth of rectangle:";
+cin>>length>>breadth;
+rectangle(length,breadth);
+cout<<"Enter side of square:";
+cin>>side;
+square(side);
+cout<<"Enter base and height of triangle:";
+cin>>base>>height;
+triangle(base,height);
+getch();
+}
+void rectangle(int l,int b)
+{
+cout<<"Area of Rectangle : "<<l*b<<endl;
+}
+void square(float s)
+{
+cout<<"Area of Square : "<<s*s<<endl;
+}
+void triangle(float b,float h)
+{
+cout<<"Area of triangle : "<<0.5*b*h<<endl;
+}

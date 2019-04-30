@@ -1,0 +1,84 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO IMPLEMENT LINEAR QUEUE USING ARRAY
+
+#include<iostream.h>
+#include<conio.h>
+#define size 5
+int q[size],rear=-1,front=-1;
+void enqueue();
+void dequeue();
+void display();
+void main()
+{
+clrscr();
+int selection;
+cout<<"Queue of size 5 created successfully\n";
+do
+{
+cout<<"1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\nEnter your choice:";
+cin>>selection;
+switch(selection)
+{
+case 1:enqueue();
+break;
+case 2:dequeue();
+break;
+case 3:display();
+break;
+default:break;
+}
+}while(selection!=4);
+getch();
+}
+void enqueue()
+{
+if(rear>=size-1)
+{
+cout<<"Queue overflow"<<endl;
+}
+else
+{
+if(front==-1)
+{
+front=0;
+}
+rear++;
+cout<<"Enter the element:";
+cin>>q[rear];
+cout<<"Enqueue done"<<endl;
+}
+}
+void dequeue()
+{
+if(front>rear || front==-1)
+{
+cout<<"Queue underflow"<<endl;
+rear=-1;
+front=-1;
+}
+else
+{
+cout<<"Dequeue Done\tData : "<<q[front]<<endl;
+front++;
+}
+}
+void display()
+{
+int tmp;
+if(front==-1 || front>rear)
+{
+cout<<"Queue is empty";
+front=rear=-1;
+}
+else
+{
+cout<<"Queue elements : ";
+tmp=front;
+while(tmp<=rear)
+{
+cout<<q[tmp]<<"\t";
+tmp++;
+}
+}
+cout<<endl;
+}

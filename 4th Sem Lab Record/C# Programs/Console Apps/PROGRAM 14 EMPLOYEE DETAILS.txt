@@ -1,0 +1,71 @@
+15. Create a class Employee with the following property Name, BirthDate, Salary and Age (Read-
+Only). Using the properties Name, BirthDate, and Salary read the details of an employee.
+Calculate Age from BirthDate and display it as year-month-days format (e.g. 20 Years 10 Months
+and 12 Days) along with other details of the employee.
+
+
+using System;
+namespace EmployeeApp
+{
+    class Employee
+    {
+        string name;
+        DateTime birthdate;
+        double salary;
+        public Employee(string e_name, DateTime e_dob, double e_salary)
+        {
+            name = e_name;
+            birthdate = e_dob;
+            salary = e_salary;
+        }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+        public DateTime DOB
+        {
+            get
+            {
+                return birthdate;
+            }
+        }
+        public double Salary
+        {
+            get
+            {
+                return salary;
+            }
+        }
+    }
+
+    class EmployeeAppTester
+    {
+        static void Main(string[] args)
+        {
+            string name;
+            DateTime birthdate;
+            double salary;
+            int y, m, d;
+            Employee e;
+            Console.Write("Enter Employee name:");
+            name = Console.ReadLine();
+            Console.Write("Enter DOB:");
+            birthdate = DateTime.Parse(Console.ReadLine());
+            Console.Write("Enter Salary:");
+            salary = Convert.ToDouble(Console.ReadLine());
+            e = new Employee(name, birthdate, salary);
+            d = (DateTime.Now - e.DOB).Days;
+            y = d / 365;
+            d = d % 365;
+            m = d / 31;
+            d = d % 31;
+            Console.WriteLine("Employee Details");
+            Console.WriteLine("Name:{0}\nBirthDate:{1}\nSalary:{2}", e.Name, e.DOB, e.Salary);
+            Console.WriteLine("Age:{0} Years {1} months {2} days", y, m, d);
+            Console.ReadKey();
+        }
+    }
+}

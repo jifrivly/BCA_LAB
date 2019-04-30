@@ -1,0 +1,78 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO IMPLEMENT STACK USING ARRAY
+
+#include<iostream.h>
+#include<conio.h>
+#define size 5
+int stack[size];
+int top=-1;
+void push();
+void pop();
+void display();
+void main()
+{
+clrscr();
+int selection;
+cout<<"Stack of size 5 created successfully\n";
+do
+{
+cout<<"1.Push\n2.Pop\n3.Display\n4.Exit\nSelect one:";
+cin>>selection;
+switch(selection)
+{
+case 1:push();
+break;
+case 2:pop();
+break;
+case 3:display();
+break;
+default:break;
+}
+}while(selection!=4);
+getch();
+}
+void push()
+{
+if(top>=size-1)
+{
+cout<<"Overflow"<<endl;
+}
+else
+{
+top++;
+cout<<"Enter element:";
+cin>>stack[top];
+cout<<"Push successful\n";
+}
+}
+void pop()
+{
+if(top==-1)
+{
+cout<<"Underflow"<<endl;
+}
+else
+{
+cout<<"Pop Successful"<<endl;
+top--;
+}
+}
+void display()
+{
+int tmp;
+if(top==-1)
+{
+cout<<"Stack is empty";
+}
+else
+{
+tmp=top;
+cout<<"Stack elements : ";
+while(tmp>=0)
+{
+cout<<stack[tmp]<<"\t";
+tmp--;
+}
+}
+cout<<endl;
+}

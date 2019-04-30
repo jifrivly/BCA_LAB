@@ -1,0 +1,41 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO IMPLEMENT BUBBLESORT
+
+#include<iostream.h>
+#include<conio.h>
+void bubblesort(int [],int &);
+void main()
+{
+clrscr();
+int array[50],size,i;
+cout<<"Enter size of the array:";
+cin>>size;
+cout<<"Enter numbers\n";
+for(i=0;i<size;i++)
+{
+cin>>array[i];
+}
+bubblesort(array,size);
+getch();
+}
+void bubblesort(int a[],int &size)
+{
+int temp,i,j;
+for(i=0;i<size;i++)
+{
+for(j=0;j<size;j++)
+{
+if(a[i]<a[j])
+{
+temp=a[i];
+a[i]=a[j];
+a[j]=temp;
+}
+}
+}
+cout<<"Sorted Elements\n";
+for(i=0;i<size;i++)
+{
+cout<<a[i]<<"\t";
+}
+}

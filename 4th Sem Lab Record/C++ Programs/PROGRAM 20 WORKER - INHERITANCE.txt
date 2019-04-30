@@ -1,0 +1,79 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+class worker
+{
+char name[50],place[50];
+public:
+void read();
+void display();
+};
+void worker::read()
+{
+cout<<"Enter name and place of employee\n";
+gets(name);
+gets(place);
+}
+void worker::display()
+{
+cout<<"Name:"<<name<<"\nPlace:"<<place<<endl;
+}
+class daily:public worker
+{
+int days;
+float wage;
+public:
+void readdetails();
+void displaydetails();
+};
+void daily::readdetails()
+{
+read();
+cout<<"Enter the number of days worked:";
+cin>>days;
+cout<<"Enter the daily wage:";
+cin>>wage;
+}
+void daily::displaydetails()
+{
+display();
+cout<<"No. of days worked:"<<days<<endl;;
+cout<<"Wage per days:"<<wage<<endl;
+cout<<"Total amount:"<<wage*days<<endl;
+}
+class salaried:public worker
+{
+double salary,allowance;
+public:
+void readdetails();
+void displaydetails();
+};
+void salaried::readdetails()
+{
+read();
+cout<<"Enter the basic salary:";
+cin>>salary;
+cout<<"Enter the allowance:";
+cin>>allowance;
+}
+void salaried::displaydetails()
+{
+display();
+cout<<"Basic Salary:"<<salary<<endl;
+cout<<"Allowance:"<<allowance<<endl;
+cout<<"Total Salary:"<<salary+allowance<<endl;;
+}
+void main()
+{
+clrscr();
+daily d;
+salaried s;
+d.readdetails();
+d.displaydetails();
+s.readdetails();
+s.displaydetails();
+getch();
+}

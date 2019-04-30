@@ -1,0 +1,39 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+void volume(int);
+void volume(int,int);
+void volume(int,int,int);
+void main()
+{
+clrscr();
+int side,length,breadth,height,radius;
+cout<<"Volume of cube\n";
+cout<<"Enter side of the cube:";
+cin>>side;
+volume(side);
+cout<<"Volume of box\n";
+cout<<"Enter length,breadth and height of box\n";
+cin>>length>>breadth>>height;
+volume(length,breadth,height);
+cout<<"Volume of cylinder\n";
+cout<<"Enter radius and height of cylinder\n";
+cin>>radius>>height;
+volume(radius,height);
+getch();
+}
+void volume(int s)
+{
+cout<<"Volume of cube = "<<s*s*s<<endl;
+}
+void volume(int l,int b,int h)
+{
+cout<<"Volume of box = "<<l*b*h<<endl;
+}
+void volume(int r,int h)
+{
+cout<<"Volume of cylinder = "<<3.14*r*r*h<<endl;
+}

@@ -1,0 +1,87 @@
+7. Write a program to create class named circle and compare the area of two circle object using
+Boolean operator overloading(==,!=,<,>)
+
+using System;
+namespace CircleApp
+{
+    class Circle
+    {
+        double radius, area;
+        public void getradius()
+        {
+            radius = Convert.ToDouble(Console.ReadLine());
+        }
+        public void findarea()
+        {
+            area = 3.14 * radius * radius;
+        }
+        public static bool operator ==(Circle a, Circle b)
+        {
+            if (a.area == b.area)
+            
+                return true;
+            
+            else
+            
+                return false;
+            
+        }
+        public static bool operator !=(Circle a, Circle b)
+        {
+            if (a.area != b.area)
+            
+               return true;
+            
+            else
+            
+                return false;
+            
+        }
+        public static bool operator <(Circle a, Circle b)
+        {
+            if (a.area < b.area)
+            
+                return true;
+            
+            else
+            
+                return false;
+            
+        }
+        public static bool operator >(Circle a, Circle b)
+        {
+            if (a.area > b.area)
+            
+                return true;
+            
+            else
+            
+                return false;
+            
+        }
+    }
+    class CircleAppTester
+    {
+        static void Main(string[] args)
+        {
+            Circle c1 = new Circle();
+            Circle c2 = new Circle();
+            Console.Write("Enter radius of circle 1:");
+            c1.getradius();
+            c1.findarea();
+            Console.Write("Enter radius of circle 2:");
+            c2.getradius();
+            c2.findarea();
+            if (c1 == c2)
+                Console.WriteLine("Areas of both the circles are equal");
+            if (c1 != c2)
+                Console.WriteLine("Areas of both circles are different");
+            if (c1 > c2)
+                Console.WriteLine("Area of circle 1 is greater than area of circle 2");
+            if (c1 < c2)
+                Console.WriteLine("Area of circle 1 is less than area of circle 2");
+            Console.ReadKey();
+        }
+    }
+}
+

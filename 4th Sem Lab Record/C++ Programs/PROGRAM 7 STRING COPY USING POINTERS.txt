@@ -1,0 +1,23 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+void main()
+{
+clrscr();
+char str[50],strc[50];
+int i=0;
+char *ptr;
+cout<<"Enter the string:";
+gets(str);
+for(ptr=str;*ptr!='\0';ptr++)
+{
+strc[i]=*ptr;
+i++;
+}
+cout<<"String Copied\n";
+puts(strc);
+getch();
+}

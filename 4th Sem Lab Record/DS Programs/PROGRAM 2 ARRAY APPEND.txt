@@ -1,0 +1,40 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO APPEND TWO ARRAYS
+
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+clrscr();
+int a[50],b[50],c[100],size1,size2,i,index=0;
+cout<<"Enter size of the first array:";
+cin>>size1;
+cout<<"Enter elements\n";
+for(i=0;i<size1;i++)
+{
+cin>>a[i];
+}
+cout<<"Enter size of the second array:";
+cin>>size2;
+cout<<"Enter elements\n";
+for(i=0;i<size2;i++)
+{
+cin>>b[i];
+}
+for(i=0;i<size1;i++)
+{
+c[index]=a[i];
+index++;
+}
+for(i=0;i<size2;i++)
+{
+c[index]=b[i];
+index++;
+}
+cout<<"Arrays appended\n";
+for(i=0;i<index;i++)
+{
+cout<<c[i]<<"\t";
+}
+getch();
+}

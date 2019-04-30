@@ -1,0 +1,96 @@
+12. Create a class Student to read and display regno, name and place. Create a derived class mark
+from student to read the mark of 5 subject (Max 100 marks) and display it. Create a derived class
+result from mark to find the total, average and grade and display the result. Create an object using
+the class Result to print the marklist.
+
+using System;
+namespace Student
+{
+    class Student
+    {
+        int regno;
+        string name, place;
+        public void read()
+        {
+            Console.WriteLine("Enter register number,name and place:");
+            regno = Convert.ToInt32(Console.ReadLine());
+            name = Console.ReadLine();
+            place = Console.ReadLine();
+        }
+        public void display()
+        {
+            Console.WriteLine("\nRegister number:{0}", regno);
+            Console.WriteLine("Name:{0}", name);
+            Console.WriteLine("Place:{0}", place);
+        }
+    }
+    class Mark : Student
+    {
+        protected int[] mark = new int[5];
+        public void readmarks()
+        {
+            Console.WriteLine("Enter marks of 5 subjects:");
+            for (int i = 0; i < 5; i++)
+            {
+                mark[i] = Convert.ToInt32(Console.ReadLine());
+            }
+        }
+        public void displaymarks()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Marks of Sub{0}={1}", i + 1, mark[i]);
+            }
+        }
+    }
+    class Result : Mark
+    {
+        int total;
+        double average;
+        public void displayresults()
+        {
+            total = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                total = total + mark[i];
+            }
+            average = total / 5;
+            display();
+            displaymarks();
+            Console.WriteLine("Total Marks:{0}", total);
+            Console.WriteLine("Average:{0}", average);
+            if (average >= 90 && average <= 100)
+            {
+                Console.WriteLine("Grade:A");
+            }
+            else if (average > 70 && average <= 89)
+            {
+                Console.WriteLine("Grade:B");
+            }
+            else if (average > 60 && average <= 70)
+            {
+                Console.WriteLine("Grade:C");
+            }
+            else if (average > 50 && average <= 60)
+            {
+                Console.WriteLine("Grade:D");
+            }
+            else
+            {
+                Console.WriteLine("Grade:F");
+            }
+        }
+    }
+    class StudentTester
+    {
+        static void Main(string[] args)
+        {
+            Result ob = new Result();
+            ob.read();
+            ob.readmarks();
+            ob.displayresults();
+            Console.ReadKey();
+        }
+    }
+}
+

@@ -1,0 +1,202 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO IMPLEMENT LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+struct node
+{
+int data;
+node *link;
+}*head,*last,*tmp,*q;
+void insertbeg();
+void insertend();
+void insertpos();
+void deletenode();
+void display();
+int count=0;
+void main()
+{
+clrscr();
+int selection;
+do
+{
+cout<<"1.Insert first\n2.Insert last\n3.Insert at position\n4.Delete Node\n5.Display\n6.Exit\nSelct any one:";
+cin>>selection;
+switch(selection)
+{
+case 1:insertbeg();
+break;
+case 2:insertend();
+break;
+case 3:insertpos();
+break;
+case 4:if(head==NULL)
+{
+cout<<"List is empty\n";
+}
+else
+{
+deletenode();
+}
+break;
+case 5:display();
+break;
+default:break;
+}
+}while(selection!=6);
+delete head;
+delete tmp;
+delete last;
+getch();
+}
+void insertbeg()
+{
+cout<<"Enter value:";
+tmp=new node;
+cin>>tmp->data;
+if(head==NULL)
+{
+head=tmp;
+last=tmp;
+}
+else
+{
+tmp->link=head;
+head=tmp;
+}
+count++;
+cout<<"Value inserted\n";
+}
+void insertend()
+{
+cout<<"Enter value:";
+tmp=new node;
+cin>>tmp->data;
+if(head==NULL)
+{
+head=tmp;
+last=tmp;
+}
+else
+{
+last->link=tmp;
+last=tmp;
+}
+count++;
+cout<<"Value inserted\n";
+}
+void insertpos()
+{
+int p;
+cout<<"Enter position:";
+cin>>p;
+if(p==1)
+{
+insertbeg();
+}
+else if(p>=count+1)
+{
+insertend();
+}
+else
+{
+cout<<"Enter data:";
+q=new node;
+cin>>q->data;
+tmp=head;
+while(p>2)
+{
+tmp=tmp->link;
+p--;
+}
+q->link=tmp->link;
+tmp->link=q;
+count++;
+cout<<"Value inserted\n";
+}
+}
+void display()
+{
+if(head==NULL)
+{
+cout<<"List is empty";
+}
+else
+{
+tmp=head;
+cout<<"List elements : ";
+while(tmp!=NULL)
+{
+cout<<tmp->data<<"\t";
+tmp=tmp->link;
+}
+}
+cout<<endl;
+}
+void deletenode()
+{
+int value,pos=0;
+cout<<"Enter value to be deleted:";
+cin>>value;
+tmp=head;
+while(tmp!=NULL)
+{
+pos++;
+if(tmp->data==value)
+{
+break;
+}
+tmp=tmp->link;
+}
+if(tmp==NULL)
+{
+cout<<"Value not found\n";
+}
+else
+{
+if(pos==1)
+{
+if(head==last)
+{
+head=NULL;
+last=NULL;
+}
+else
+{
+head=head->link;
+}
+}
+if(pos==count)
+{
+if(head==last)
+{
+head=NULL;
+last=NULL;
+}
+else
+{
+tmp=head;
+while(tmp->link!=last)
+{
+tmp=tmp->link;
+}
+last=tmp;
+last->link=NULL;
+}
+}
+else
+{
+tmp=head;
+while(pos>2)
+{
+tmp=tmp->link;
+pos--;
+}
+q=tmp;
+tmp=tmp->link;
+q->link=tmp->link;
+}
+cout<<"Node deleted\n";
+count--;
+}
+}

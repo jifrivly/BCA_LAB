@@ -1,0 +1,107 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO IMPLEMENT BINARY TREE TRAVERSAL
+
+
+#include<iostream.h>
+#include<conio.h>
+struct node
+{
+int data;
+node *left;
+node *right;
+}*root,*tmp,*current,*parent;
+void insert(int);
+void inorder(node *);
+void preorder(node *);
+void postorder(node *);
+void main()
+{
+clrscr();
+int limit,v,i;
+cout<<"How many datas do you want to insert?\n";
+cin>>limit;
+for(i=0;i<limit;i++)
+{
+cout<<"Enter data "<<i+1<<":";
+cin>>v;
+insert(v);
+}
+cout<<"Inorder Traversal Result : ";
+inorder(root);
+cout<<"\nPreorder Traversal Result : ";
+preorder(root);
+cout<<"\nPostorder Traversal Result : ";
+postorder(root);
+getch();
+}
+void insert(int value)
+{
+tmp=new node;
+tmp->data=value;
+if(root==NULL)
+{
+root=tmp;
+}
+else
+{
+current=root;
+while(current!=NULL)
+{
+parent=current;
+if(value>(current->data))
+{
+current=(current->right);
+}
+else
+{
+current=(current->left);
+}
+}
+if(value<(parent->data))
+{
+parent->left=tmp;
+}
+else
+{
+parent->right=tmp;
+}
+}
+}
+void inorder(node *n)
+{
+if(n->left!=NULL)
+{
+inorder(n->left);
+}
+cout<<n->data<<"\t";
+if(n->right!=NULL)
+{
+inorder(n->right);
+}
+}
+void preorder(node *n)
+{
+cout<<n->data<<"\t";
+if(n->left!=NULL)
+{
+preorder(n->left);
+}
+if(n->right!=NULL)
+{
+preorder(n->right);
+}
+}
+void postorder(node *n)
+{
+if(n->left!=NULL)
+{
+postorder(n->left);
+}
+if(n->right!=NULL)
+{
+postorder(n->right);
+}
+cout<<n->data<<"\t";
+}
+
+

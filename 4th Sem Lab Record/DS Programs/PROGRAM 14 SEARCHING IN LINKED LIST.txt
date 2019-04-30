@@ -1,0 +1,75 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO SEARCH FOR A NODE IN LINKED LIST AND COUNT NO OF NODES
+
+#include<iostream.h>
+#include<conio.h>
+struct node
+{
+int data;
+node *link;
+}*head,*tmp;
+void insert();
+int count();
+void search();
+void main()
+{
+clrscr();
+int selection,c;
+do
+{
+cout<<"1.Insert\n2.Count\n3.Search\n4.Exit\nSelct any one:";
+cin>>selection;
+switch(selection)
+{
+case 1:insert();
+break;
+case 2:c=count();
+cout<<"No of nodes : "<<c<<endl;
+break;
+case 3:search();
+break;
+default:break;
+}
+}while(selection!=4);
+getch();
+}
+void insert()
+{
+cout<<"Enter value:";
+tmp=new node;
+cin>>tmp->data;
+tmp->link=head;
+head=tmp;
+}
+int count()
+{
+int c=0;
+tmp=head;
+while(tmp!=NULL)
+{
+c++;
+tmp=tmp->link;
+}
+return c;
+}
+void search()
+{
+int value,pos=0;
+cout<<"Enter value to be searched : ";
+cin>>value;
+tmp=head;
+while(tmp!=NULL)
+{
+pos++;
+if(tmp->data==value)
+{
+cout<<"Value found at location "<<pos<<endl;
+break;
+}
+tmp=tmp->link;
+}
+if(pos==count())
+{
+cout<<"Value not found\n";
+}
+}

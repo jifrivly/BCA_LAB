@@ -1,0 +1,18 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+clrscr();
+int num1,num2;
+int *a=&num1,*b=&num2,*temp;
+cout<<"Enter two numbers\n";
+cin>>num1>>num2;
+temp=a;
+a=b;
+b=temp;
+cout<<"Numbers swapped\nNumber1="<<*a<<"\nNumber2="<<*b;
+getch();
+}

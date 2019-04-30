@@ -1,0 +1,41 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+//ARMSTRONG NUMBERS
+
+ALGORITHM:
+
+STEP1:START
+STEP2:DECLARE NECCESSARY VARIABLES
+STEP3:READ THE LOWER BOUND AND UPPER BOUND
+STEP4:FIND THE ARMSTRONG NUMBERS BETWEEN LOWER BOUND AND UPPERBOUND USING LOOP AND NECCESSARY CALCULATIONS AND PRINT NUMBERS
+STEP5:STOP
+
+CODE:
+ 
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+clrscr();
+int lb,ub,rem,sum,temp;
+cout<<"Enter lower bound:";
+cin>>lb;
+cout<<"Enter upper bound:";
+cin>>ub;
+cout<<"Armstrong Numbers in between "<<lb<<" and "<<ub<<endl;
+for(lb;lb<=ub;lb++)
+{
+temp=lb;
+sum=0;
+while(temp>0)
+{
+rem=temp%10;
+sum=sum+(rem*rem*rem);
+temp=temp/10;
+}
+if(sum==lb)
+{
+cout<<lb<<"\t";
+}
+}
+getch();
+}

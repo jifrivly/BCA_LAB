@@ -1,0 +1,51 @@
+23. Perform base conversion(decimal to other bases) using combobox
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace BaseConversion
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            comboBox1.Items.Add("ToBinary");
+            comboBox1.Items.Add("ToOctal");
+            comboBox1.Items.Add("ToHexaDecimal");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int num;
+            string bin,hex,oct;
+            num = int.Parse(textBox1.Text);
+            if (comboBox1.Text == "ToBinary")
+            {
+                bin = Convert.ToString(num, 2);
+                label4.Text = num.ToString() + " in binary = "+bin;
+            }
+            else if (comboBox1.Text == "ToOctal")
+            {
+                oct = Convert.ToString(num, 8);
+                label4.Text = num.ToString() + " in octal = " + oct;
+            }
+            else if (comboBox1.Text == "ToHexaDecimal")
+            {
+                hex = Convert.ToString(num, 16);
+                label4.Text = num.ToString() + " in hexa decimal = " + hex;
+            }
+
+        }
+    }
+}

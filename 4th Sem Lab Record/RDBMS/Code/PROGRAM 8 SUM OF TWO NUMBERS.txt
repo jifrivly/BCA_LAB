@@ -1,0 +1,15 @@
+RDBMS PROGRAM 8-SUM OF TWO NUMBERS
+
+DECLARE
+A INT;
+B INT;
+C INT;
+BEGIN
+A:=&NUMBER1;
+B:=&NUMBER2;
+C:=A+B;
+dbms_output.put_line('VALUE OF NUMBER1='||A);
+dbms_output.put_line('VALUE OF NUMBER2='||B);
+dbms_output.put_line('SUM='||C);
+END;
+/

@@ -1,0 +1,58 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA
+
+
+#include<iostream.h>
+#include<conio.h>
+class fibanocci
+{
+int a,b,c,limit;
+public:
+fibanocci()
+{
+a=0;
+b=1;
+}
+fibanocci(fibanocci &);
+void getlimit();
+void fnumbers();
+};
+fibanocci::fibanocci(fibanocci &f)
+{
+limit=f.limit;
+}
+void fibanocci::getlimit()
+{
+cout<<"Enter limit:";
+cin>>limit;
+}
+void fibanocci::fnumbers()
+{
+if(limit==1)
+{
+cout<<a;
+}
+else if(limit==2)
+{
+cout<<a<<"\t"<<b;
+}
+else
+{
+cout<<a<<"\t"<<b<<"\t";
+for(c=a+b;c<=limit;c=a+b)
+{
+a=b;
+b=c;
+cout<<c<<"\t";
+}
+}
+}
+void main()
+{
+clrscr();
+fibanocci f1,f2;
+f1.getlimit();
+f2=f1;
+cout<<"Fibanocci numbers upto the limit\n";
+f2.fnumbers();
+getch();
+}

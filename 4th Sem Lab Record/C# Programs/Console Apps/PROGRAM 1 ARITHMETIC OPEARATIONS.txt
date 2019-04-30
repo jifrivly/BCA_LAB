@@ -1,0 +1,46 @@
+1. Write a program for all basic arithmetic operations and also using the following exceptions to
+handle the errors (DivideByZeroException, FormatException)
+
+using System;
+namespace SimpleCalculator
+{
+    class Calculator
+    {
+        static void Main(string[] args)
+        {
+            int num1, num2,choice;
+            try
+            {
+                Console.Write("1.Addition\n2.Substraction\n3.Multiplication\n4.Division\n5.Exit\nEnter your choice:");
+                choice = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter two numbers:");
+                num1 = Convert.ToInt32(Console.ReadLine());
+                num2 = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1: Console.WriteLine("Result={0}", num1 + num2);
+                        break;
+                    case 2: Console.WriteLine("Result={0}", num1 - num2);
+                        break;
+                    case 3: Console.WriteLine("Result={0}", num1 * num2);
+                        break;
+                    case 4: Console.WriteLine("Result={0}", num1 / num2);
+                        break;
+                    case 5: Environment.Exit(0);
+                        break;
+                    default: break;
+                }
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Division by zero is not possible");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("You are not entered number");
+            }
+
+            Console.ReadKey();
+        }
+    }
+}

@@ -1,0 +1,41 @@
+4. Write a program to find the volume of cube, cylinder, and box using function overloading.
+
+using System;
+namespace Volume
+{
+    class volumefinder
+    {
+        public static double volume(double s)
+        {
+            return s * s * s;
+        }
+        public static double volume(double r, double h)
+        {
+            return 3.14 * r * r * h;
+        }
+        public static double volume(double l, double b, double h)
+        {
+            return l * b * h;
+        }
+
+        static void Main(string[] args)
+        {
+            Console.Clear();
+            double side, radius, height, length, breadth;
+            Console.Write("Enter the side of the cube:");
+            side = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Volume of the cube = {0}", volume(side));
+            Console.WriteLine("Enter the radius and height of the cylinder:");
+            radius = Convert.ToDouble(Console.ReadLine());
+            height = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Volume of cylinder = {0}", volume(radius, height));
+            Console.WriteLine("Enter the length,breadth and height of the box:");
+            length = Convert.ToDouble(Console.ReadLine());
+            breadth = Convert.ToDouble(Console.ReadLine());
+            height = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Volume of the box = {0}", volume(length, breadth, height));
+            Console.ReadKey();
+        }
+    }
+}
+

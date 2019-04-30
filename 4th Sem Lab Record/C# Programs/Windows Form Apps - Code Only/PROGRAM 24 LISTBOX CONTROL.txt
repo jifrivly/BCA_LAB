@@ -1,0 +1,90 @@
+24. Create an application on listbox control
+to add item at first
+to add item at last
+to insert item at specified position
+to remove item by value
+to remove item by index
+to remove item by selected value
+to display the count of items
+to search an item in the listbox
+use option buttons to do different actions
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace ListBoxApp
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                listBox1.Items.Add(textBox1.Text);
+                label5.Text = "No. of items = " + listBox1.Items.Count.ToString();
+            }
+            else if (radioButton2.Checked)
+            {
+                listBox1.Items.Insert(0, textBox1.Text);
+                label5.Text = "No. of items = " + listBox1.Items.Count.ToString();
+            }
+            else if (radioButton3.Checked)
+            {
+                listBox1.Items.Insert((int.Parse(textBox2.Text)) - 1, textBox1.Text);
+                label5.Text = "No. of items = " + listBox1.Items.Count.ToString();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked)
+            {
+                listBox1.Items.Remove(textBox3.Text);
+                label5.Text = "No. of items = " + listBox1.Items.Count.ToString();
+            }
+            else if (radioButton5.Checked)
+            {
+                listBox1.Items.RemoveAt((int.Parse(textBox4.Text)) - 1);
+                label5.Text = "No. of items = " + listBox1.Items.Count.ToString();
+            }
+            else if (radioButton6.Checked)
+            {
+                listBox1.Items.Remove(listBox1.SelectedItem);
+                label5.Text = "No. of items = " + listBox1.Items.Count.ToString();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int index;
+            index = listBox1.FindString(textBox5.Text,-1);
+            if (index != -1)
+            {
+                MessageBox.Show("Item found");
+            }
+            else
+            {
+                MessageBox.Show("Item not found");
+            }
+        }
+    }
+}

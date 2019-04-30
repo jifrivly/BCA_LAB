@@ -1,0 +1,73 @@
+22. Change the fore color and back color of a label control using group box and radio button.
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace ColorChanger
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        private void rdbtnblack_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtnblack.Checked)
+            {
+                label2.ForeColor = Color.Black;
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label2.Text = textBox1.Text;
+        }
+
+        private void rdbtngreen_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtngreen.Checked)
+            {
+                label2.ForeColor = Color.Green;
+            }
+        }
+
+        private void rdbtnyellow_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtnyellow.Checked)
+            {
+                label2.ForeColor = Color.Yellow;
+            }
+        }
+         private void rdbtnsilver_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtnsilver.Checked)
+            {
+                label2.BackColor = Color.Silver;
+            }
+        }
+
+        private void rdbtngrey_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtngrey.Checked)
+            {
+                label2.BackColor = Color.Gray;
+            }
+        }
+
+        private void rdbtnviolet_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtnviolet.Checked)
+            {
+                label2.BackColor = Color.Violet;
+            }
+        }
+    }
+}

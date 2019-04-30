@@ -1,0 +1,42 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+//FACTORIAL OF A NUMBER
+
+ALGORITHM:
+
+STEP1:START
+STEP2:DECLARE A FUNCTION FACTORIAL 
+STEP3:DECLARE NECCESSARY VARIABLES IN MAIN FUNCTION SUCH AS F AND N
+STEP4:READ N
+STEP5:INVOKE FACTORIAL BY PASSING N
+STEP6:DEFINE FUNCTION FACTORIAL
+STEP7:IF N==0 OR N==1 RETURN 1
+	ELSE RETURN N*FACTORIAL(N-1)
+STEP8:PRINT THE FACTORIAL
+STEP9:STOP
+
+CODE:
+
+
+#include<iostream.h>
+#include<conio.h>
+int factorial(int);
+void main()
+{
+clrscr();
+int num;
+cout<<"Enter the number:";
+cin>>num;
+cout<<"Factorial of "<<num<<" = "<<factorial(num);
+getch();
+}
+int factorial(int num)
+{
+if(num==1)
+{
+return 1;
+}
+else
+{
+return num*factorial(num-1);
+}
+}

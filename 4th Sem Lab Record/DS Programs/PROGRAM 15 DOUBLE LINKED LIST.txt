@@ -1,0 +1,201 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO IMPLEMENT DOUBLE LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+struct node
+{
+int data;
+node *next;
+node *prev;
+}*head,*last,*tmp,*p;
+void insertbeg();
+void insertpos();
+void insertend();
+void deletenode();
+void traverse();
+int count=0;
+void main()
+{
+clrscr();
+int selection;
+int p;
+do
+{
+cout<<"1.Insert at beginning\n2.Insert at last\n3.Insert at Position\n4.Delete Node\n5.Display\n6.Exit\nSelect any one:";
+cin>>selection;
+switch(selection)
+{
+case 1:insertbeg();
+break;
+case 2:insertend();
+break;
+case 3:insertpos();
+break;
+case 4:if(head==NULL)
+{
+cout<<"List is empty\n";
+}
+else
+{
+deletenode();
+}
+break;
+case 5:traverse();
+break;
+default:break;
+}
+}while(selection!=6);
+getch();
+}
+void insertbeg()
+{
+tmp=new node;
+cout<<"Enter value:";
+cin>>tmp->data;
+if(head==NULL)
+{
+head=tmp;
+last=tmp;
+}
+else
+{
+tmp->next=head;
+head->prev=tmp;
+head=tmp;
+}
+count++;
+cout<<"Value inserted\n";
+}
+void insertend()
+{
+tmp=new node;
+cout<<"Enter value:";
+cin>>tmp->data;
+if(head==NULL)
+{
+head=tmp;
+last=tmp;
+}
+else
+{
+last->next=tmp;
+tmp->prev=last;
+last=tmp;
+}
+count++;
+cout<<"Value inserted\n";
+}
+void insertpos()
+{
+int pos;
+cout<<"Enter position : ";
+cin>>pos;
+if(pos==1)
+{
+insertbeg();
+}
+else if(pos>=count+1)
+{
+insertend();
+}
+else
+{
+p=new node;
+cout<<"Enter data:";
+cin>>p->data;
+tmp=head;
+while(pos>2)
+{
+tmp=tmp->next;
+pos--;
+}
+p->next=tmp->next;
+tmp->next=p;
+p->prev=tmp;
+count++;
+cout<<"Value inserted\n";
+}
+}
+void deletenode()
+{
+int value,pos=0;
+cout<<"Enter value to be deleted:";
+cin>>value;
+tmp=head;
+while(tmp!=NULL)
+{
+pos++;
+if(tmp->data==value)
+{
+break;
+}
+tmp=tmp->next;
+}
+if(tmp==NULL)
+{
+cout<<"Item not in the list\n";
+}
+else
+{
+if(pos==1)
+{
+if(head==last)
+{
+head=NULL;
+last=NULL;
+}
+else
+{
+head=head->next;
+head->prev=NULL;
+}
+}
+else if(pos==count)
+{
+if(head==last)
+{
+head=NULL;
+last=NULL;
+}
+else
+{
+last=last->prev;
+last->next=NULL;
+}
+}
+else
+{
+tmp=head;
+while(pos>2)
+{
+tmp=tmp->next;
+pos--;
+}
+p=tmp->next;
+tmp->next=p->next;
+p=p->next;
+p->prev=tmp;
+}
+count--;
+cout<<"Node deleted\n";
+}
+}
+void traverse()
+{
+if(head==NULL)
+{
+cout<<"List is empty\n";
+}
+else
+{
+tmp=head;
+cout<<"Elements : ";
+while(tmp!=NULL)
+{
+cout<<tmp->data<<"\t";
+tmp=tmp->next;
+}
+cout<<endl;
+}
+}

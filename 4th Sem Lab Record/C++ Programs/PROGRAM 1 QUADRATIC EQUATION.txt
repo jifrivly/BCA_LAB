@@ -1,0 +1,49 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//ROOTS OF QUADRATIC EQUATION
+
+ALGORITHM:
+
+STEP1:START
+STEP2:DECLARE NECCESSARY VARIABLES
+STEP3:READ THE SQUARE COEFFICIENT,LINEAR COEFFIFIENT AND CONSTANT INTO A,B,C
+STEP4:CALCULATE D=(B*B)-4*A*C
+STEP5:IF(D>0) GO TO STEP 6
+	ELSE IF(D==0) GO TO STEP 7
+	ELSE PRINT "ROOTS ARE IMAGINARY"
+STEP6:CALCULATE R1=((-B)+(sqrt(D)))/(2*A);
+	R2=((-B)-(sqrt(D)))/(2*A);
+	PRINT R1&R2
+STEP7:CALCULTAE R1=-B/2*A PRINT R1
+STEP8:STOP
+
+CODE:
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+void main()
+{
+clrscr();
+int a,b,c;
+float disc,r1,r2;
+cout<<"Enter square coefficient,linear coeficient and constant"<<endl;
+cin>>a>>b>>c;
+disc=(b*b)-(4*a*c);
+if(disc>0)
+{
+r1=((-b)+(sqrt(disc)))/(2*a);
+r2=((-b)-(sqrt(disc)))/(2*a);
+cout<<"Root1="<<r1<<"\nRoot2="<<r2;
+}
+ else if(disc==0)
+ {
+ r1=(-b)/(2*a);
+ cout<<"Root="<<1;
+ }
+  else
+  {
+  cout<<"Roots are imaginary";
+  }
+getch();
+}

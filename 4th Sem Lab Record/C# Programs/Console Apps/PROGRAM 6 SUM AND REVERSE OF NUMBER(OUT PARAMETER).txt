@@ -1,0 +1,36 @@
+6. Write a function to find sum and reverse of number and return the sum and reverse values using
+OUT parameter
+
+
+using System;
+namespace SumAndReverse
+{
+    class Number
+    {
+        public static void findsumrev(int num,out int sum, out int rev)
+        {
+            int rem;
+            sum = 0;
+            rev = 0;
+            while (num > 0)
+            {
+                rem = num % 10;
+                sum = sum + rem;
+                rev = rev * 10 + rem;
+                num = num / 10;
+            }
+            
+        }
+       static void Main(string[] args)
+        {
+            int num=0,sum,rev;
+           Console.Write("Enter the number:");
+           num = Convert.ToInt32(Console.ReadLine());
+            findsumrev(num,out sum,out rev);
+            Console.WriteLine("Number={0}\nSum={1}\nReverse={2}",num,sum, rev);
+            Console.ReadKey();
+        }
+    }
+}
+
+

@@ -1,0 +1,26 @@
+5. Write a function to find the sum of n numbers by passing variable arguments using param
+keyword
+
+
+using System;
+namespace Sum
+{
+    class Sum
+    {
+        public static int findsum(params int[] numbers)
+        {
+            int sum = 0;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                sum = sum + numbers[i];
+            }
+            return sum;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Sum of first set of numbers : {0}", findsum(5, 2, 6, 3, 5));
+            Console.WriteLine("Sum of second set of numbers : {0}", findsum(10, 25, 15, 23, 56, 47, 85));
+            Console.ReadKey();
+        }
+    }
+}

@@ -1,0 +1,45 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+
+#include<iostream.h>
+#include<conio.h>
+class Number
+{
+int a;
+public:
+void read();
+void display();
+void operator++();
+void operator++(int);
+};
+void Number::read()
+{
+cout<<"Enter a number:";
+cin>>a;
+}
+void Number::display()
+{
+cout<<"Number : "<<a<<endl;
+}
+void Number::operator++()
+{
+a++;
+cout<<"Number incremented"<<endl;
+}
+void Number::operator++(int)
+{
+a++;
+cout<<"Number incremented"<<endl;
+}
+void main()
+{
+clrscr();
+Number n;
+n.read();
+n.display();
+++n;
+n.display();
+n++;
+n.display();
+getch();
+}

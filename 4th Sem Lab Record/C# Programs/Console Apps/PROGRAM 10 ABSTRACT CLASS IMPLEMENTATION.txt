@@ -1,0 +1,48 @@
+10. Create an Abstract class Shapes with a data member side and member functions ReadSide to read
+the side and abstract function GetArea to find the area. Create a derived class Square from it and
+find the area of square. Create another derived class Cube from it to find the area of cube
+
+
+using System;
+namespace Shapes
+{
+    abstract class Shapes
+    {
+        protected double side;
+        public void readside()
+        {
+            side = Convert.ToDouble(Console.ReadLine());
+        }
+        public abstract double getarea();
+    }
+    class square : Shapes
+    {
+
+        public override double getarea()
+        {
+            return side * side;
+        }
+    }
+    class cube : Shapes
+    {
+        public override double getarea()
+        {
+            return 6 * side * side;
+        }
+    }
+    class ShapesTester
+    {
+        static void Main(string[] args)
+        {
+            square s = new square();
+            cube c = new cube();
+            Console.Write("Enter the side of the square:");
+            s.readside();
+            Console.WriteLine("Area of the square={0}", s.getarea());
+            Console.Write("Enter the side of the cube:");
+            c.readside();
+            Console.WriteLine("Area of the cube={0}", c.getarea());
+            Console.ReadKey();
+        }
+    }
+}

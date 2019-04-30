@@ -1,0 +1,52 @@
+14. Create a Class Triangle with member function ReadSides to read 3 sides. Create a virtual function
+GetArea to find the area of triangle. Create a class Box inherit from Triangle and override the
+function GetArea to find the area of Box.
+
+
+using System;
+namespace AreaFinder
+{
+    class Triangle
+    {
+        protected double side1, side2, side3;
+        public void readsides()
+        {
+            Console.WriteLine("Enter length of 3 sides:");
+            side1 = Convert.ToDouble(Console.ReadLine());
+            side2 = Convert.ToDouble(Console.ReadLine());
+            side3 = Convert.ToDouble(Console.ReadLine());
+        }
+        public virtual double getarea()
+        {
+            double s,area;
+            s = (side1 + side2 + side3) / 2;
+            area = Math.Sqrt(s * (s - side1) * (s - side2) * (s - side3));
+            return area;
+        }
+    }
+    class Box : Triangle
+    {
+        public override double getarea()
+        {
+            double area;
+            area = (2 * side1 * side2) + (2 * side1 * side3) + (2 * side2 * side3);
+            return area;
+        }
+    }
+
+    class AreaFinderTester
+    {
+        static void Main(string[] args)
+        {
+            Triangle T = new Triangle();
+            Box B = new Box();
+            Console.WriteLine("Find Area of Triangle\n");
+            T.readsides();
+            Console.WriteLine("Area of the triangle = {0}", T.getarea());
+            Console.WriteLine("Find Area of Box\n");
+            B.readsides();
+            Console.WriteLine("Area of the box = {0}", B.getarea());
+            Console.ReadKey();
+        }
+    }
+}

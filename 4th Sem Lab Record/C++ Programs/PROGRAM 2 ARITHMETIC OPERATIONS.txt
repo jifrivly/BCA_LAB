@@ -1,0 +1,42 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA
+//SIMPLE ARITHMETIC OPERATIONS
+
+ALGORITHM:
+
+STEP1:START
+STEP2:DECLARE NECCESSARY VARIABLES
+STEP3:SHOW THE CHOICE
+STEP4:READ THE CHOICE AND TWO NUMBERS A,B
+STEP5:IF CHOICE==1 THEN PRINT A+B
+	ELSEIF CHOICE==2 THEN PRINT A-B
+	ELSEIF CHOICE==3 THEN PRINT A*B
+	ELSEIF CHOICE==4 THEN PRINT A/B
+STEP6:STOP
+
+CODE:   
+
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+clrscr();
+float num1,num2;
+int selection;
+cout<<"1.Addition\n2.Substraction\n3.Multiplication\n4.Division\nEnter your choice:";
+cin>>selection;
+cout<<"Enter two numbers\n";
+cin>>num1>>num2;
+switch(selection)
+{
+case 1:cout<<"Result = "<<num1+num2;
+break;
+case 2:cout<<"Result = "<<num1-num2;
+break;
+case 3:cout<<"Result = "<<num1*num2;
+break;
+case 4:cout<<"Result = "<<num1/num2;
+break;
+default:cout<<"Invalid selection";
+}
+getch();
+}

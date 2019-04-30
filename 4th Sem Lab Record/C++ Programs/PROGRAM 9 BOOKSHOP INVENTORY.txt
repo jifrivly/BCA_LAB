@@ -1,0 +1,51 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+class Bookshop
+{
+char bookid[10],name[50],author[50];
+int price,no;
+public:
+void read();
+void print();
+};
+void Bookshop::read()
+{
+cout<<"Enter Book ID,name and author name\n";
+gets(bookid);
+gets(name);
+gets(author);
+cout<<"Enter price and stock\n";
+cin>>price;
+cin>>no;
+}
+void Bookshop::print()
+{
+cout<<"Book ID:"<<bookid<<endl;
+cout<<"Book Name:"<<name<<endl;
+cout<<"Author name:"<<author<<endl;
+cout<<"Price:"<<price<<endl;
+cout<<"Stock:"<<no<<endl;
+}
+void main()
+{
+clrscr();
+Bookshop b[50];
+int n;
+cout<<"Enter no. of books:";
+cin>>n;
+for(int i=0;i<n;i++)
+{
+cout<<"Enter details of book "<<i+1<<endl;
+b[i].read();
+}
+cout<<"\nBook Details\n";
+for(i=0;i<n;i++)
+{
+cout<<"Book "<<i+1<<endl;
+b[i].print();
+}
+getch();
+}

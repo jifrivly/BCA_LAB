@@ -1,0 +1,72 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO DO PUSH AND POP ON STACK USING LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+void push();
+void pop();
+void traverse();
+struct node
+{
+int data;
+node *link;
+}*top,*tmp;
+void main()
+{
+clrscr();
+int selection;
+do
+{
+cout<<"1.Push\n2.Pop\n3.Traverse\n4.Exit\nSelect any one:";
+cin>>selection;
+switch(selection)
+{
+case 1:push();
+break;
+case 2:pop();
+break;
+case 3:traverse();
+break;
+default:break;
+}
+}while(selection!=4);
+getch();
+}
+void push()
+{
+tmp=new node;
+cout<<"Enter value:";
+cin>>tmp->data;
+tmp->link=top;
+top=tmp;
+}
+void pop()
+{
+if(top==NULL)
+{
+cout<<"Stack is empty"<<endl;
+}
+else
+{
+cout<<"Node popped\tData : "<<top->data<<endl;
+top=top->link;
+}
+}
+void traverse()
+{
+tmp=top;
+if(tmp==NULL)
+{
+cout<<"Stack is Empty";
+}
+else
+{
+cout<<"Stack elements : ";
+while(tmp!=NULL)
+{
+cout<<tmp->data<<"\t";
+tmp=(tmp->link);
+}
+}
+cout<<endl;
+}

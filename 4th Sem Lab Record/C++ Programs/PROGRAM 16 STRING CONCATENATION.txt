@@ -1,0 +1,40 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<string.h>
+class String
+{
+char str[50];
+public:
+void read();
+void display();
+void operator+=(String);
+};
+void String::read()
+{
+gets(str);
+}
+void String::display()
+{
+cout<<str;
+}
+void String::operator+=(String s)
+{
+strcat(str,s.str);
+}
+void main()
+{
+clrscr();
+String s1,s2;
+cout<<"Enter string 1 : ";
+s1.read();
+cout<<"Enter string 2 : ";
+s2.read();
+s1+=s2;
+cout<<"String after concatenation : ";
+s1.display();
+getch();
+}

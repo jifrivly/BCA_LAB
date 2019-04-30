@@ -1,0 +1,70 @@
+11. Create a class Product with the Data members PCode, PName, Qty and Price. Read and display
+the details using Accessors and Mutators
+
+
+using System;
+namespace Product
+{
+    class Product
+    {
+        string pcode, pname;
+        float qty, price;
+        public void setcode(string c)
+        {
+            pcode = c;
+        }
+        public string getcode()
+        {
+            return pcode;
+        }
+        public void setname(string n)
+        {
+            pname = n;
+        }
+        public string getname()
+        {
+            return pname;
+        }
+        public void setquantity(float q)
+        {
+            qty = q;
+        }
+        public float getquantity()
+        {
+            return qty;
+        }
+        public void setprice(float p)
+        {
+            price = p;
+        }
+        public float getprice()
+        {
+            return price;
+        }
+        
+    }
+    class ProductTester
+    {
+        static void Main(string[] args)
+        {
+            string code, name;
+            float quantity, price;
+            Product ob = new Product();
+            Console.Write("Enter the Product Code:");
+            code = Console.ReadLine();
+            ob.setcode(code);
+            Console.Write("Enter the Product name:");
+            name = Console.ReadLine();
+            ob.setname(name);
+            Console.Write("Enter the Quantity:");
+            quantity = Convert.ToSingle(Console.ReadLine());
+            ob.setquantity(quantity);
+            Console.Write("Enter the Price:");
+            price = Convert.ToSingle(Console.ReadLine());
+            ob.setprice(price);
+            Console.WriteLine("\nProduct Details\n");
+            Console.WriteLine("Product Code:{0}\nProduct Name:{1}\nQuantity:{2}\nPrice:{3}", ob.getcode(), ob.getname(), ob.getquantity(), ob.getprice());
+            Console.ReadKey();
+        }
+    }
+}

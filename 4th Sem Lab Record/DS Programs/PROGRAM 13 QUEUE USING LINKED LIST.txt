@@ -1,0 +1,93 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO IMPLEMENT QUEUE USING LINKED LIST
+
+#include<iostream.h>
+#include<conio.h>
+struct qnode
+{
+int data;
+qnode *link;
+}*tmp,*rear,*front;
+void enqueue();
+void dequeue();
+void traverse();
+void main()
+{
+clrscr();
+int selection;
+do
+{
+cout<<"1.Enqueue\n2.Dequeue\n3.Traverse(Rear to front)\n4.Exit\nSelect any one:";
+cin>>selection;
+switch(selection)
+{
+case 1:enqueue();
+break;
+case 2:dequeue();
+break;
+case 3:traverse();
+break;
+default:break;
+}
+}while(selection!=4);
+getch();
+}
+void enqueue()
+{
+cout<<"Enter value:";
+tmp=new qnode;
+cin>>tmp->data;
+tmp->link=rear;
+rear=tmp;
+if(front==NULL)
+{
+front=rear;
+}
+}
+void traverse()
+{
+tmp=rear;
+if(tmp==NULL)
+{
+cout<<"Queue is empty";
+}
+else
+{
+cout<<"Queue elements : ";
+while(tmp!=NULL)
+{
+cout<<tmp->data<<"\t";
+tmp=tmp->link;
+}
+}
+cout<<endl;
+}
+void dequeue()
+{
+tmp=rear;
+if(tmp==NULL)
+{
+cout<<"Queue underflow";
+}
+else
+{
+cout<<"Node deleted\tData : "<<front->data;
+if(front==rear)
+{
+front=NULL;
+rear=NULL;
+}
+else
+{
+while(tmp->link!=front)
+{
+tmp=tmp->link;
+}
+front=tmp;
+front->link=NULL;
+}
+}
+cout<<endl;
+}
+
+

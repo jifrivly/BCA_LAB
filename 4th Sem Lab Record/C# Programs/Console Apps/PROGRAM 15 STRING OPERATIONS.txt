@@ -1,0 +1,72 @@
+16. Create a class StringOperation. Write following Member Functions SpaceToHiphen to change
+spaces in the given string to hiphen, RemoveSpace remove all spaces in the given string and
+Reverse to reverse a given string. Create a Deligate and execute the above functions
+
+
+using System;
+delegate void stringopr(string str);
+namespace StringOperationApp
+{
+    class StringOperation
+    {
+        public void spacestohiphen(string str)
+        {
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == ' ')
+                {
+                    Console.Write("-");
+                }
+                else
+                {
+                    Console.Write(str[i]);
+                }
+            }
+            Console.WriteLine();
+        }
+        public void removespaces(string str)
+        {
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == ' ')
+                {
+                    continue;
+                }
+                else
+                {
+                    Console.Write(str[i]);
+                }
+            }
+            Console.WriteLine();
+        }
+        public void reverse(string str)
+        {
+            int i;
+            for (i = str.Length - 1; i >= 0; i--)
+            {
+                Console.Write(str[i]);
+            }
+            Console.WriteLine();
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str;
+            StringOperation ob = new StringOperation();
+            stringopr str1 = new stringopr(ob.spacestohiphen);
+            stringopr str2 = new stringopr(ob.removespaces);
+            stringopr str3 = new stringopr(ob.reverse);
+            Console.Write("Enter string:");
+            str = Console.ReadLine();
+            Console.Write("String after replacing spaces with hiphen:");
+            str1(str);
+            Console.Write("String after removing spaces:");
+            str2(str);
+            Console.Write("Reverse of the String:");
+            str3(str);
+            Console.ReadKey();
+        }
+    }
+}

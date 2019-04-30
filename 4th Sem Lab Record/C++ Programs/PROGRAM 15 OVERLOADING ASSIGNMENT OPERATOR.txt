@@ -1,0 +1,36 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+#include<iostream.h>
+#include<conio.h>
+class Number
+{
+int num;
+public:
+void read();
+void display();
+void operator=(Number);
+};
+void Number::read()
+{
+cout<<"Enter a number:";
+cin>>num;
+}
+void Number::display()
+{
+cout<<"Number:"<<num;
+}
+void Number::operator=(Number a)
+{
+num=a.num;
+}
+void main()
+{
+clrscr();
+Number n1,n2;
+n1.read();
+n2=n1;
+cout<<"Assignment Done\n";
+n2.display();
+getch();
+}
+

@@ -1,0 +1,35 @@
+2. Write a program to read and display n numbers using jagged arrays.
+
+using System;
+namespace JaggedArray
+{
+    class JaggedArrayApp
+    {
+        static void Main(string[] args)
+        {
+            int i, j;
+            int[][] jagged = new int[3][];
+            jagged[0] = new int[2];
+            jagged[1] = new int[3];
+            jagged[2] = new int[4];
+            for (i = 0; i < jagged.Length; i++)
+            {
+                Console.WriteLine("Enter the elements for the array-{0}(size {1})", i + 1, jagged[i].Length);
+                for (j = 0; j < jagged[i].Length; j++)
+                {
+                    jagged[i][j] = Convert.ToInt32(Console.ReadLine());
+                }
+            }
+            for (i = 0; i < jagged.Length; i++)
+            {
+                Console.Write("Jagged Array {0} -  ", i + 1);
+                for (j = 0; j < jagged[i].Length; j++)
+                {
+                    Console.Write(jagged[i][j] + "\t");
+                }
+                Console.WriteLine();
+            }
+            Console.ReadKey();
+        }
+    }
+}

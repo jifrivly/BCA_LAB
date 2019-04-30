@@ -1,0 +1,69 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO SORT A SET OF NUMBERS USING MERGE SORT
+
+
+#include<iostream.h>
+#include<conio.h>
+int arr[100];
+void merge_sort(int,int);
+void merge(int,int,int);
+void main()
+{
+clrscr();
+int i,size;
+cout<<"Enter no. of elements:";
+cin>>size;
+cout<<"Enter elements\n";
+for(i=0;i<size;i++)
+{
+cin>>arr[i];
+}
+merge_sort(0,size-1);
+cout<<"Sorted numbers\n";
+for(i=0;i<size;i++)
+{
+cout<<arr[i]<<"\t";
+}
+getch();
+}
+void merge_sort(int low,int high)
+{
+int mid;
+if(low!=high)
+{
+mid=(low+high)/2;
+merge_sort(low,mid);
+merge_sort(mid+1,high);
+merge(low,mid,high);
+}
+}
+void merge(int low,int mid,int high)
+{
+int temp[100];
+int i=low;
+int j=mid+1;
+int k=low;
+while((i<=mid)&&(j<=high))
+{
+if(arr[i]<=arr[j])
+{
+temp[k++]=arr[i++];
+}
+else
+{
+temp[k++]=arr[j++];
+}
+}
+while(i<=mid)
+{
+temp[k++]=arr[i++];
+}
+while(j<=high)
+{
+temp[k++]=arr[j++];
+}
+for(i=low;i<=high;i++)
+{
+arr[i]=temp[i];
+}
+}

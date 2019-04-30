@@ -1,0 +1,49 @@
+//PROGRAM WRITTEN AND TESTED BY SHITHU KRISHNA
+//PROGRAM TO IMPLEMENT BINARY SEARCH
+
+#include<iostream.h>
+#include<conio.h>
+void search(int [],int &);
+void main()
+{
+clrscr();
+int array[50],size,i;
+cout<<"Enter size of the array:";
+cin>>size;
+cout<<"Enter numbers\n";
+for(i=0;i<size;i++)
+{
+cin>>array[i];
+}
+search(array,size);
+getch();
+}
+void search(int a[],int &size)
+{
+int value,beg=0,end=size,mid,count=0;
+cout<<"Enter number to be searched:";
+cin>>value;
+mid=(beg+end)/2;
+for(mid;mid<=end;mid=(beg+end)/2)
+{
+count++;
+if(count==size)
+{
+cout<<"Number not found";
+break;
+}
+if(a[mid]==value)
+{
+cout<<"Number found at location "<<mid+1;
+break;
+}
+else if(value<a[mid])
+{
+end=mid-1;
+}
+else
+{
+beg=mid+1;
+}
+}
+}

@@ -1,0 +1,29 @@
+9. Create a Static class TemperatureConverter. Define a static member function CelsiusToFahrenheit
+for converting the temperature
+
+using System;
+namespace Temperature
+{
+    static class TemperatureConverter
+    {
+        static double tempfahren;
+        public static void celciustofahreheit(double tempcelcius)
+        {
+            tempfahren = (tempcelcius * 9 / 5) + 32;
+            Console.WriteLine("{0}C in fahrenheit = {1}F", tempcelcius, tempfahren);
+        }
+    }
+
+    class TemperatureConverterTester
+    {
+        static void Main(string[] args)
+        {
+            double temp;
+            Console.WriteLine("Celcius To Fahrenheit Conversion");
+            Console.Write("Enter the temperature in celcius:");
+            temp = Convert.ToDouble(Console.ReadLine());
+            TemperatureConverter.celciustofahreheit(temp);
+            Console.ReadKey();
+        }
+    }
+}

@@ -1,0 +1,75 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<process.h>
+class Bank
+{
+double balance,rate;
+public:
+Bank(double b,double r)
+{
+balance=b;
+rate=r;
+}
+void deposit();
+void withdraw();
+void printbalance();
+};
+void Bank::deposit()
+{
+double amount;
+cout<<"Enter the amount to be deposited:";
+cin>>amount;
+balance+=amount;
+cout<<"Transaction is successful"<<endl;
+}
+void Bank::withdraw()
+{
+double amount;
+cout<<"Enter the amount to be withdrawed:";
+cin>>amount;
+if(amount>balance)
+{
+cout<<"Transaction is not possible due to insufficient balance"<<endl;
+}
+else
+{
+balance-=amount;
+cout<<"Transaction is successful"<<endl;
+}
+}
+void Bank::printbalance()
+{
+cout<<"Account balance = "<<balance<<endl;
+}
+void main()
+{
+clrscr();
+double bal,rate;
+int selection;
+cout<<"Enter initial balance:";
+cin>>bal;
+cout<<"Enter rate of interest:";
+cin>>rate;
+Bank b(bal,rate);
+do
+{
+cout<<"1.Deposit\n2.Withdraw\n3.Show Balance\n4.Exit\nSelect one:";
+cin>>selection;
+switch(selection)
+{
+case 1:b.deposit();
+break;
+case 2:b.withdraw();
+break;
+case 3:b.printbalance();
+break;
+case 4:exit(0);
+break;
+default:cout<<"Invalid selection:";
+}
+}while(selection!=4);
+getch();
+}

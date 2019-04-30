@@ -1,0 +1,44 @@
+//PROGRAM WRITTEN BY SHITHU KRISHNA 
+
+#include<iostream.h>
+#include<conio.h>
+class Complex
+{
+int real,img;
+public:
+void read();
+friend void add(Complex,Complex);
+friend void substract(Complex,Complex);
+};
+void Complex::read()
+{
+cin>>real>>img;
+}
+void add(Complex a,Complex b)
+{
+int r,i;
+r=a.real+b.real;
+i=a.img+b.img;
+cout<<r<<"+"<<i<<"i"<<endl;
+}
+void substract(Complex a,Complex b)
+{
+int r,i;
+r=a.real-b.real;
+i=a.img-b.img;
+cout<<r<<"-"<<i<<"i"<<endl;
+}
+void main()
+{
+clrscr();
+Complex c1,c2;
+cout<<"Enter real and complex part of complex number 1\n";
+c1.read();
+cout<<"Enter real and complex part of complex number 2\n";
+c2.read();
+cout<<"C1 + C2 = ";
+add(c1,c2);
+cout<<"C1 - C2 = ";
+substract(c1,c2);
+getch();
+}
