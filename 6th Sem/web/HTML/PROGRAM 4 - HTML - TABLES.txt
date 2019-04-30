@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Tables Example</title>
+</head>
+<body>
+<table align="center" bgcolor="#CCCCCC" border="1">
+<tr>
+<th colspan="4"> <b> Student Details</b></th>
+</tr>
+<tr>
+<th><b>Roll Number</b></th>
+<th><b>Name</b></th>
+<th><b>Department</b></th>
+<th><b>Year</b></th>
+</tr>
+<tr>
+<td>3217</td>
+<td>Shithu Krishna</td>
+<td>BCA</td>
+<td rowspan="2">3</td>
+</tr>
+<tr>
+<td>3213</td>
+<td>Manooj</td>
+<td>BCA</td>
+</tr>
+<tr>
+<td>3212</td>
+<td>Aswanth</td>
+<td>BCA</td>
+<td rowspan="2">2</td>
+</tr>
+<tr>
+<td>3219</td>
+<td>Vaishnav</td>
+<td>BCA</td>
+</tr>
+</table>
+</body>
+</html>

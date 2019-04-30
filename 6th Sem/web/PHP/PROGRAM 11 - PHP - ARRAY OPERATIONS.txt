@@ -1,0 +1,97 @@
+<html>
+<head>
+    <title>Array Operations</title>
+</head>
+<body>
+    <h1>Names</h1>
+    <?php
+        $arr=array("Salim","Shithu","Asif","Salim","Vaishnav","Asif","Thashreef","Aswanth","Sajin","Ameen");
+        reset($arr);
+        $i=1;
+        foreach($arr as $val) {
+            echo "$i . ".$val."<br />";
+            $i++;
+        }
+        echo "<br />";
+        if(isset($_POST['btnasc'])) {
+            sort($arr);
+            echo "<b>Array in Ascending Order</b><br />";
+            $i=1;
+            foreach($arr as $val) {
+                echo "$i . ".$val."<br/>";
+                $i++;
+            }
+        }
+        if(isset($_POST['btnunique'])) {
+            echo "<b>Array without duplicate elements</b><br />";
+            $arr=array_unique ($arr);
+            $i=1;
+            foreach($arr as $val) {
+                echo "$i . ".$val."<br>";
+                $i++;
+            }
+        }
+        if(isset($_POST['btnremove'])) {
+            echo "<b>Array after removing last element</b><br />";
+            array_pop ($arr);
+            $i=1;
+            foreach($arr as $val) {
+                echo "$i . ".$val."<br>";
+                $i++;
+            }
+        }
+        if(isset($_POST['btnreverse'])) {
+            echo "<b>Array in reverse order</b><br />";
+            $arr=array_reverse($arr);
+            $i=1;
+            foreach($arr as $val) {
+                echo "$i . ".$val."<br>";
+                $i++;
+            }
+        }
+        if(isset($_POST['btnsearch'])) {
+            $text=$_POST['txtsearch'];
+            if(!$text) {
+                echo "Text is required for searching";
+            }
+            else {
+                /*$k = array_search($text,$arr,false);
+                if(!$k) {
+                    echo "Element '$text' not found";
+                }
+                else {
+                    echo "Element '$text' found";
+                }*/
+                $i;
+                for($i=0;$i<10;$i++) {
+                    if($arr[$i]==$text) {
+                        break;
+                    }
+                }
+                if($i>=10) {
+                    echo "Element '$text' not found";
+                }
+                else {
+                    $i++;
+                    echo "Element '$text' found at Position $i";
+                }
+            }
+        }
+    ?>
+    <form method="post" action="">
+    <table>
+    <tr>
+    <td><input type="submit" name="btnasc"  value="Ascending Order" /></td></tr>
+    <tr><td>
+    <input type="submit" name="btnunique"  value="Unique" /></td></tr>
+    <tr>
+    <td>
+    <input type="submit" name="btnremove"  value="Remove Last Element" /></td></tr>
+    <tr><td>
+    <input type="submit" name="btnreverse" value="Reverse Order" /></td></tr>
+    <tr><td><input type="text" name="txtsearch"  /></td>
+    <td><input type="submit" value="Search" name="btnsearch" /></td></tr>
+    </table>
+    </form>
+</body>
+</html>

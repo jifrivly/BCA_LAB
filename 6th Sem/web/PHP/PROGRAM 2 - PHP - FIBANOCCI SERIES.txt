@@ -1,0 +1,36 @@
+<form method="post">  
+ Enter the limit:  
+   <input type="number" name="number">  
+   <input type="submit" value="Find">  
+  </form>  
+<?php  
+ if($_POST)  
+ {    
+  $number = $_POST['number']; 
+  if($number<0)
+  {
+  echo "No fibanocci numbers";
+  }
+  else if($number==0)
+  {
+  echo "Fibanocci numbers upto $number : 0";
+  }
+  else
+  {
+$f1 = 0;
+$f2 = 1;
+
+echo "Fibanocci numbers upto $number : ";
+echo $f1." , ";
+echo $f2." , ";
+$f3=$f1+$f2;
+while ($f3<=$number)
+{
+echo $f3." , ";
+$f1 = $f2 ;
+$f2 = $f3 ;
+$f3=$f1+$f2;
+}
+}
+}
+?>

@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Lists Example</title>
+</head>
+<body>
+<h2>UnOrdered List</h2>
+<ul>
+<li>Beetroot</li>
+<li>Ginger</li>
+<li>Potato</li>
+</ul>
+<h2>Ordered List</h2>
+<ol>
+<li>Carrot</li>
+<li>Tomoto</li>
+<li>Cabbage</li>
+</ol>
+<h2>Definition List</h2>
+<dl>
+<dt><b>HTML</b></dt>
+<dd>This stands for Hyper Text Markup Language</dd>
+<dt><b>HTTP</b></dt>
+<dd>This stands for Hyper Text Transfer Protocol</dd>
+</dl>
+</body>
+</html>

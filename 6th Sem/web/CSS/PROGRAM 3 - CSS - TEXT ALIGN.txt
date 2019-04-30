@@ -1,0 +1,29 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="textalign.css" />
+<title>Text Align CSS</title>
+</head>
+<body>
+<h1>This is heading 1 aligned left</h1>
+<h2>This is heading 2 aligned center</h1>
+<h3>This is heading 3 aligned right</h1>
+</body>
+</html>
+
+
+textalign.css
+
+
+/* CSS Document */
+h1
+{
+text-align:left;
+}
+h2
+{
+text-align:center;
+}
+h3
+{
+text-align:right;
+}

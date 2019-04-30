@@ -1,0 +1,166 @@
+connection.php
+
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "login";
+$conn = new mysqli($servername, $username, $password,$dbname);
+if ($conn->connect_error) 
+{
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
+
+login.php
+
+
+<?php
+include('connection.php');
+if(isset($_POST['login']))
+{
+$username=$_POST['username'];
+$password=$_POST['password'];
+$error=false;
+if(!$username)
+{
+echo "Username required";
+$error=true; 
+}
+else if(!$password)
+{
+echo "Password required";
+$error=true;
+}
+if(!$error)
+{
+$sql="select * from login where username='$username'";
+$result=$conn->query($sql);
+if($result->num_rows>0)
+{
+while($row=$result->fetch_assoc())
+{
+if($row["password"]==$password)
+{
+session_start();
+$_SESSION['fullname']=$row["fullname"];
+header('Location:welcome.php');
+}
+else
+{
+echo "Incorrect Password";
+}
+}
+}
+else
+{
+echo "Invalid User";
+}
+}
+}
+?>
+<form action="" method="post">
+<table>
+<tr>
+<td>Username</td>
+<td><input type="text" name="username"/></td></tr>
+<tr>
+<td>Password</td>
+<td><input type="password" name="password" /></td></tr>
+<tr><td></td>
+<td><input type="submit" name="login" value="login"/></td>
+</tr>
+</table>
+New User??<a href="register.php">Register</a>
+</form>
+
+
+register.php
+
+
+<?php
+include('connection.php');
+if(isset($_POST['register']))
+{
+$fullname=$_POST['txtname'];
+$username=$_POST['txtuser'];
+$password=$_POST['txtpassword'];
+$error=false;
+if(!$fullname)
+{
+echo "Full name required";
+$error=true;
+}
+else if(!$username)
+{
+echo "Username required";
+$error=true; 
+}
+else if(!$password)
+{
+echo "Password required";
+$error=true;
+}
+else
+{
+$sql="select * from login where username='$username'";
+$result=$conn->query($sql);
+if($result->num_rows>0)
+{
+echo "Username already exists";
+$error=true;
+}
+}
+if(!$error)
+{
+$sql="insert into login values('$fullname','$username','$password')";
+if($conn->query($sql)==TRUE)
+{
+echo "Registered successfully!!Please login";
+}
+else
+{
+echo "Error:".sql."<br>".$conn->error;
+}
+}
+}
+?>
+<h1>Registration</h1>
+<form action="" method="post">
+<table>
+<tr>
+<td>Full Name</td>
+<td><input type="text" name="txtname" /></td></tr>
+<tr>
+<td>Username</td>
+<td><input type="text" name="txtuser"/></td></tr>
+<tr>
+<td>Password</td>
+<td><input type="password" name="txtpassword"/></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" name="register" value="Register"/></td>
+</tr>
+</table>
+Already Registered??<a href="login.php">Login</a>
+</form>
+
+
+welcome.php
+
+
+<?php
+session_start();
+if(isset($_POST['logout']))
+{
+session_destroy();
+header('Location:login.php');
+}
+echo '<h1>Welcome '.$_SESSION['fullname'].'</h1>';
+?>
+<form method="post">
+<input type="submit" name="logout" value="logout"/>
+</form>

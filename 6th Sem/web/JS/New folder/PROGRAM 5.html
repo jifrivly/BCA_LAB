@@ -1,0 +1,47 @@
+<html>
+<head>
+<script type="text/javascript">
+function validateForm()
+{
+var email = document.myForm.Email.value;
+var atpos = email.indexOf("@");
+var dotpos = email.lastIndexOf(".");
+if (atpos < 1 || ( dotpos - atpos < 2 ))
+{
+alert("Please enter correct email ID")
+document.myForm.Email.focus() ;
+return false;
+}
+else if(document.myForm.User.value=="")
+{
+alert("Enter username");
+document.myForm.User.focus();
+return false;
+}
+else if(document.myForm.Pass.value=="")
+{
+alert("Enter Password");
+document.myForm.Pass.focus();
+return false;
+}
+else
+{
+
+document.write("<h1>Your Details</h1>");
+document.write("Email ID : "+document.myForm.Email.value+"<br/>");
+document.write("Username : "+document.myForm.User.value);
+return true;
+}
+}
+</script>
+<title>Form Validation</title>
+</head>
+<body>
+<form  name="myForm" action="" onsubmit="return validateForm()" method="post">
+Email<input type="text" name="Email" /><br /><br />
+Username<input type="text" name="User" /><br /><br />
+Password<input type="password" name="Pass" /><br /><br />
+<input type="submit" value="Register" />
+</form>
+</body>
+</html>

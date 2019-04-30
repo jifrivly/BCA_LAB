@@ -1,0 +1,37 @@
+<html>
+<head>
+<script language="javascript">
+var bgcolors=new Array("red","blue","pink","yellow","white");
+function setRed()
+{
+document.bgColor=bgcolors[0];
+}
+function setBlue()
+{
+document.bgColor=bgcolors[1];
+}
+function setPink()
+{
+document.bgColor=bgcolors[2];
+}
+function setYellow()
+{
+document.bgColor=bgcolors[3];
+}
+function setWhite()
+{
+document.bgColor=bgcolors[4];
+}
+</script>
+<title>Background Color Changing</title>
+</head>
+<body>
+<form>
+<input type="button" value="Red" onclick="setRed()" /><br /><br />
+<input type="button" value="Blue" onclick="setBlue()" /><br /><br />
+<input type="button" value="Pink" onclick="setPink()" /><br /><br />
+<input type="button" value="Yellow" onclick="setYellow()" /><br /><br />
+<input type="button" value="White" onclick="setWhite()" /><br /><br />
+</form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+connection.php
+
+<?php 
+$servername = "localhost"; 
+$username = "root"; 
+$password = ""; 
+$dbname="test";
+$conn = mysql_connect($servername, $username, $password); 
+if(!$conn) 
+{ 
+die('Could not connect: ' . mysql_error()); 
+}
+mysql_select_db($dbname);
+?>
+
+display.php
+
+<html>
+<head>
+<title>Mark List</title>
+</head>
+<body>
+<h1>Get Mark List</h1>
+<form action="" method="post">
+<table>
+<tr>
+<td>Enter Roll Number</td>
+<td><input type="text" name="txtroll"/></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" name="btnsubmit" value="Submit"/></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
+<?php
+include('connection.php');
+if(isset($_POST['btnsubmit']))
+{
+$roll=$_POST['txtroll'];
+if(!$roll)
+{
+echo "Roll number required";
+}
+else
+{
+$select="select * from student where rollno=$roll";
+$result=mysql_query( $select, $conn );
+$row=mysql_fetch_array($result);
+echo "<b>";
+if(!$row)
+{
+echo "Invalid roll number";
+}
+else
+{
+$name=$row["name"];
+$marks=$row["marks"];
+$grade=$row["grade"];
+echo "<h2>Mark List</h2>";
+echo "Roll Number : $roll<br/>";
+echo "Name : $name<br/>";
+echo "Marks : $marks<br/>";
+echo "Grade : $grade";
+}
+echo "</b>";
+}
+}
+?>

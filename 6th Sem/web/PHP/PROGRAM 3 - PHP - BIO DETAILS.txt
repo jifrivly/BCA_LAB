@@ -1,0 +1,75 @@
+bio.html
+
+<form action="biodet.php" method="post">
+<h1>Bio Data</h1>
+<table>
+<tr>
+<td>Name</td>
+<td><input type="text" name="txtName" required="required" />
+</td>
+</tr>
+<tr>
+<td>Age</td>
+<td><input type="text" name="txtAge" required="required" />
+</td>
+</tr>
+<tr>
+<td>Gender</td>
+<td><input type="radio" name="gen" value="male" checked="checked">Male<input type="radio" name="gen" value="female">Female
+</td>
+</tr>
+<tr>
+<td>Guardian's Name</td>
+<td><input type="text" name="txtGuard" required="required" />
+</td>
+</tr>
+<tr>
+<td>Address</td>
+<td><textarea name="txtAddr" required="required"></textarea>
+</td>
+</tr>
+<tr>
+<td>Qualification</td>
+<td><input type="text" name="txtQua" required="required" />
+</td>
+</tr>
+<tr>
+<td>Mobile Number</td>
+<td><input type="text" name="txtMobile" required="required" />
+</td>
+</tr>
+<tr>
+<td>Email</td>
+<td><input type="text" name="txtEmail" required="required" />
+</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" value="Submit"></td>
+</table>
+</form>
+
+
+biodata.php
+
+<?php
+$name=$_POST['txtName'];
+$age=$_POST['txtAge'];
+$gender=$_POST['gen'];
+$gname=$_POST['txtGuard'];
+$addr=$_POST['txtAddr'];
+$qual=$_POST['txtQua'];
+$mob=$_POST['txtMobile'];
+$email=$_POST['txtEmail'];
+echo "<h1>Bio Data</h1>";
+echo "Name : $name<br/>";
+echo "Age : $age<br/>";
+echo "Gender : $gender<br/>";
+echo "Guardian's Name : $gname<br/>";
+echo "Address : $addr<br/>";
+echo "Qualification : $qual<br/>";
+echo "Mobile Number : $mob<br/>";
+echo "Email ID : $email<br/>";
+?>
+
+

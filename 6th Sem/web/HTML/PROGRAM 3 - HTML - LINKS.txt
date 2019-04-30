@@ -1,0 +1,27 @@
+1st Page : Links.html
+
+<html>
+<head>
+<title>Links Example</title>
+</head>
+<body>
+<a name="Top"></a><br />
+<a href="newpage.html">Click Here</a>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<a href="#Top">Go to Top</a>
+</body>
+</html>
+
+
+2nd Page : newpage.html
+
+<html>
+<head>
+<title>New Page</title>
+</head>
+<body>
+<h3>This is new Page</h3><br>
+<a href="Links.html">Go to back</a>
+</body>
+</html>

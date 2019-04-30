@@ -1,0 +1,15 @@
+<?php
+$month=60*60*24*30+time();
+setcookie('lastvisit', date("G:i:s - d/m/y",time()),$month);
+?>
+<?php
+if(isset($_COOKIE['lastvisit']))
+{
+$visit=$_COOKIE['lastvisit'];
+echo "Your last visit was -:".$visit;
+}
+else
+{
+echo "You are first time";
+}
+?>

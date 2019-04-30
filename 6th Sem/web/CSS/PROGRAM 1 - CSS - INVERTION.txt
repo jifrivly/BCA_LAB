@@ -1,0 +1,23 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="invert.css" />
+<title>Invert</title>
+</head>
+<body>
+<h1>H1 inverted</h1>
+<h6>H6 inverted</h6>
+</body>
+</html>
+
+invert.css
+
+/* CSS Document */
+h1
+{
+font-size:11px;
+}
+h6
+{
+font-size:32px;
+}
+

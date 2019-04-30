@@ -1,0 +1,17 @@
+<html>
+<head>
+<script language="javascript">
+function showAlert()
+{
+alert("This is alert box");
+}
+</script>
+<title>Untitled Document</title>
+</head>
+<body>
+<form>
+Click the button below<br/>
+<input type="button" value="Click Me" onclick="showAlert()" />
+</form>
+</body>
+</html>

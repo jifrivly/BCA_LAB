@@ -1,0 +1,215 @@
+connection.php
+
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "accounts";
+    $conn  =  mysql_connect($servername, $username, $password); 
+    if (!$conn) 
+ { 
+        die('Could not connect: ' . mysql_error()); 
+    }
+    mysql_select_db($dbname);
+?>
+
+account.php
+
+<html>
+<head>
+    <title>Accounts</title>
+</head>
+<body>
+    <h1>Accounts - Home</h1>
+    <form action = "" method = "post">
+        <input type = "submit" name = "btnnew" value = "New Account"/>
+        <input type = "submit" name = "btndelete" value = "Delete Account"/>
+        <input type = "submit" name = "btnupdate" value = "Update"/>
+    </form>
+</body>
+</html>
+<?php
+    if (isset($_POST['btnnew'])) {
+        header('Location:newaccount.php');
+    }
+    if (isset($_POST['btndelete'])) {
+        header('Location:delete.php');
+    }
+    if (isset($_POST['btnupdate'])) {
+        header('Location:update.php');
+    }
+?>
+
+newaccount.php
+
+<html>
+<head>
+    <title>New Account</title>
+</head>
+<body>
+    <h1>New Account</h1>
+    <form action = "" method = "post">
+    <table>
+    <tr> <td> Account Number </td>
+        <td> <input type = "number" name = "txtaccno" /> </td> </tr>
+    <tr> <td> Name </td>
+        <td> <input type = "text" name = "txtname" /> </td> </tr>
+    <tr> <td> Balance </td>
+        <td> <input type = "number" name = "txtbal" /> </td> </tr>
+    <tr> <td>  </td>
+        <td> <input type = "submit" name = "btncreate" value = "Create" /> </td> </tr>
+    </table>
+    <?php
+        include('connection.php');
+        if (isset($_POST['btncreate'])) {
+            $accno = $_POST['txtaccno'];
+            $name = $_POST['txtname'];
+            $bal = $_POST['txtbal'];
+            $error = false;
+            echo "<b>";
+            if (!$accno) {
+                echo "Account number required";
+                $error = true;
+            }
+            else if (!$name) {
+                echo "Name required";
+                $error = true;
+            }
+            else if (!$bal) {
+                echo "Balance required";
+                $error = true;
+            }
+            else {
+                $select = "select * from account where accountno = $accno";
+                $result = mysql_query($select,$conn);
+                $row = mysql_fetch_array($result);
+                if ($row) {
+                    echo "Account number exists";
+                    $error = true;
+                }
+            }
+            if (!$error) {
+                $insert = "insert into account values($accno,'$name',$bal)";
+                $retval = mysql_query($insert,$conn);
+                if (!$retval) {
+                    die("Could not insert data" . mysql_error());
+                }
+                else {
+                    echo "Account created";
+                }
+            }
+            echo "</b>";
+            echo "<br/>";
+        }
+    ?>
+    <a href = "account.php">Home</a>
+    </form>
+</body>
+</html>
+
+delete.php
+
+<html>
+<head>
+    <title>Delete Account</title>
+</head>
+<body>
+    <h1>Delete Account</h1>
+    <form action = "" method = "post">
+        <table>
+            <tr> <td> Account number </td>
+                <td> <input type = "number" name = "txtaccno" /> </td> </tr>
+            <tr> <td> </td>
+                <td> <input type = "submit" name = "btndelete" value = "Delete"/> </td> </tr>
+        </table>
+        <?php
+            include('connection.php');
+            if (isset($_POST['btndelete'])) {
+                $accno = $_POST['txtaccno'];
+                echo "<b>";
+                if (!$accno) {
+                    echo "Account number required";
+                }
+                else {
+                    $delete = "delete from account where accountno = $accno";
+                    $retval = mysql_query($delete,$conn);
+                    $count = mysql_affected_rows($conn);
+                    if ($count>0) {
+                        echo "Account deleted";
+                    }
+                    else {
+                        echo "Account not found";
+                    }
+                }
+                echo "</b>";
+                echo "<br/>";
+            }
+        ?>
+        <a href = "account.php">Home</a>
+    </form>
+</body>
+</html>
+
+update.php
+
+<html>
+<head>
+    <title>Update Account</title>
+</head>
+<body>
+    <h1>Update Account</h1>
+    <form action = "" method = "post">
+        <table>
+            <tr> <td> Account number </td>
+                <td> <input type = "number" name = "txtaccno" /> </td> </tr>
+            <tr> <td> Transaction </td>
+                <td> <input type = "radio" name = "transaction" value = "Deposit" checked = "checked"/>Deposit<input type = "radio" name = "transaction" value = "Withdraw" />Withdraw </td> </tr>
+            <tr> <td> Amount </td> <td> <input type = "number" name = "txtamount" /> </td> </tr>
+            <tr> <td> </td> <td> <input type = "submit" name = "btnupdate" value = "Update"/> </td> </tr>
+        </table>
+        <?php
+            include('connection.php');
+            if (isset($_POST['btnupdate'])) {
+                $accno = $_POST['txtaccno'];
+                $type = $_POST['transaction'];
+                $amount = $_POST['txtamount'];
+                echo "<b>";
+                if (!$accno) {
+                    echo "Account number required";
+                }
+                else if (!$amount) {
+                    echo "Amount required";
+                }
+                else {
+                    $select = "select * from account where accountno = $accno";
+                    $result = mysql_query($select,$conn);
+                    $row = mysql_fetch_array($result);
+                    if ($row) {
+                        $current = $row["amount"];
+                        if ($type =  = "Deposit") {
+                            $amount = $current+$amount;
+                        }
+                        else {
+                            $amount = $current-$amount;
+                        }
+                        $update = "update account set amount = $amount where accountno = $accno";
+                        $retval = mysql_query($update,$conn);
+                        if ($retval) {
+                            echo "Account updated";
+                        }
+                        else {
+                            die("Could not update data" . mysql_error());
+                        }
+                    }
+                    else {
+                        echo "Invalid Account number";
+                    }
+                }
+                echo "</b>";
+                echo "<br/>";
+            }
+        ?>
+        <a href = "account.php">Home</a>
+    </form>
+</body>
+</html>

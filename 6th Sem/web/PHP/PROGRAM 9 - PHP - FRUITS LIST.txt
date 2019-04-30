@@ -1,0 +1,43 @@
+fruit.html
+
+<html>
+<head>
+<title>Fruits</title>
+</head>
+<body>
+<h1>Fruit List</h1>
+<form method="POST" action="fruitlist.php">
+Select fruits from the list<br/><br/>
+<select name="sel[]" id="sel" multiple="miltiple" size="3">
+<option>Pine Apple</option>
+<option>Mango</option>
+<option>Kiwi</option>
+<option>Banana</option>
+<option>Orange</option>
+<option>Grapes</option>
+<option>Apple</option>
+<option>Pappaya</option>
+</select>
+<br/><br/>
+<input type="submit" Value="Click" name="btnclick" />
+</form>
+</body>
+</html>
+
+fruitlist.php
+
+<?php
+if(!$_POST['sel'])
+{
+echo "Please select some fruits";
+}
+else
+{
+$fruits="";
+foreach($_POST['sel'] as $val ) 
+{
+$fruits = $fruits.$val . ",";
+}
+echo "You are selected $fruits";
+}
+?>

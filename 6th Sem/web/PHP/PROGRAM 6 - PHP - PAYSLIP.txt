@@ -1,0 +1,113 @@
+employeedetails.php
+
+<?php
+if(isset($_POST['submit']))
+{
+$name=$_POST['name'];
+$salary=$_POST['salary'];
+$designation=$_POST['designation'];
+$error=false;
+if(!$name)
+{
+echo "Name required";
+$error=true;
+}
+else if(!$salary)
+{
+echo "Salary required";
+$error=true;
+}
+else if(!$designation)
+{
+echo "Designation required";
+$error=true;
+}
+if(!$error)
+{
+session_start();
+$_SESSION['name']=$name;
+$_SESSION['salary']=$salary;
+$_SESSION['designation']=$designation;
+header('Location:payslip.php');
+}
+}
+?>
+<form action="" method="post">
+<table>
+<tr><td>Name</td> <td><input type="text" name="name" /></td></tr>
+<tr><td>Basic Salary</td><td><input type="text" name="salary" /></td></tr>
+<tr><td>Designation</td><td><select name="designation">
+<option value="Manager" selected="selected">Manager</option>
+<option value="Supervisor">Supervisor</option>
+<option value="Clerk">Clerk</option>
+<option value="Peon">Peon</option>
+</select></td></tr>
+<tr><td></td><td>
+<input type="submit" value="Submit" name="submit" /></td></tr>
+</table>
+</form>
+
+payslip.php
+
+
+<?php
+session_start();
+$name=$_SESSION['name'];
+$salary=$_SESSION['salary'];
+$designation=$_SESSION['designation'];
+$conv;
+$extra;
+if($designation=="Manager")
+{
+$conv=1000;
+$extra=500;
+}
+else if($designation=="Supervisor")
+{
+$conv=750;
+$extra=200;
+}
+else if($designation=="Clerk")
+{
+$conv=500;
+$extra=100;
+}
+else
+{
+$conv=250;
+$extra=0;
+}
+$hra=$salary*(25/100);
+$gross=$salary+$hra+$conv+$extra;
+$it;
+if($gross<=2500)
+{
+$it=0;
+}
+else if($gross>2500 && $gross<=4000)
+{
+$it=$gross*(3/100);
+}
+else if($gross>4000 && $gross<=5000)
+{
+$it=$gross*(5/100);
+}
+else if($gross>5000)
+{
+$it=$gross*(8/100);
+}
+$net=$gross-$it;
+echo "<h1>Pay Slip</h1>";
+echo "Name : $name<br>";
+echo "Basic Salary : $salary<br>";
+echo "Designation : $designation<br>";
+echo "Conveyance Allowance : $conv<br>";
+echo "Extra Allowance : $extra<br>";
+echo "HRA : $hra<br>";
+echo "Gross : $gross<br>";
+echo "Income Tax : $it<br>";
+echo "Net : $net<br>";
+session_destroy();
+?>
+
+

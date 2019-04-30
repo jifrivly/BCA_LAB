@@ -1,0 +1,95 @@
+1st Page : Home.html
+
+<html>
+<head>
+<title>Home</title>
+</head>
+<frameset rows="17%,*">
+<frame name="top" src="top.html">
+<frameset cols="20%,*">
+<frame name="left" src="menu.html" />
+<frame name="content" src="content.html" />
+</frameset>
+<body>
+</body>
+</html>
+
+
+2nd Page : top.html
+
+<HTML>
+<head>
+<title>Top</title>
+</head>
+<body bgcolor="#CCCCCC">
+<h1><font color="#000099">MES KEVEEYAM COLLEGE,VALANCHERY</font></h1>
+<H3><i>Accredited by NAAC with A Grade</i></H3>
+</body>
+</html>
+
+
+3rd Page : menu.html
+
+<html>
+<head>
+<title>Menu</title>
+</head>
+<body>
+<h3>Menu</h3>
+<a href="content.html" target="content">About</a><br />
+<a href="courses.html" target="content">Courses Offered</a><br />
+<a href="contact.html" target="content">Contact Us</a>
+</body>
+</html>
+
+4th Page : content.html
+
+<html>
+<head>
+<title>Content</title>
+</head>
+<body>
+<h3>About the College</h3>
+<h3>MES KEVEEYAM COLLEGE,VALANCHERY</h3>
+<i>Affiliated to University of Calicut</i><br/><br/>
+<b>Official Address</b><br /><br />
+MES KeVeeYam College,Valanchery<br/>
+Malappuram District,Kerala<br />
+Pin : 676552
+</body>
+</html>
+
+
+
+5th Page : contact.html
+
+<html>
+<head>
+<title>Contact</title>
+</head>
+<body>
+<h3>Contact Us</h3>
+Phone : 0494-2644380<br />
+Email : principal@meskvmcollege.org
+</body>
+</html>
+
+
+6th Page : courses.html
+
+<html>
+<head>
+<title>Courses</title>
+</head>
+<body>
+<h3>Courses Offered in this College</h3>
+<ol>
+<li>BCA</li>
+<li>BCom</li>
+<li>BA Functional English</li>
+<li>BSC Physics</li>
+<li>BSC Polymer Chemistry</li>
+<li>BSC Zoology</li>
+</ol>
+</body>
+</html>

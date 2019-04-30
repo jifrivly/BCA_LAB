@@ -1,0 +1,57 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="border.css" />
+<title>Border Color</title>
+</head>
+<body>
+<div>
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Department</th>
+</tr>
+<tr>
+<td>Shithu</td>
+<td>BCA</td>
+</tr>
+<tr>
+<td>Manooj</td>
+<td>BCA</td>
+</tr>
+<tr>
+<td>Aswanth</td>
+<td>BCA</td>
+</tr>
+<tr>
+<td>Vaishnav</td>
+<td>BCA</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
+
+
+
+border.css
+
+
+/* CSS Document */
+/* CSS Document */
+table
+{
+border-color:#FF0000;
+}
+th
+{
+border-color:#FFFF00;
+}
+td
+{
+border-color:#0000FF
+}
+div
+{
+border-color:#00FF33;
+}
+

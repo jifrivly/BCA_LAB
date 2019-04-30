@@ -1,0 +1,92 @@
+connection.php
+<?php
+    $servername  =  "localhost";
+    $username  =  "root";
+    $password  =  "";
+    $dbname  =  "products";
+    $conn  =  new mysqli($servername, $username, $password,$dbname);
+    if  ($conn->connect_error)  {
+        die("Connection failed: " . $conn->connect_error);
+    }
+?>
+insert.php
+<?php
+    include('connection.php');
+    if (isset($_POST['add'])) {
+        $icode = $_POST['itemcode'];
+        $iname = $_POST['itemname'];
+        $price = $_POST['unitprice'];
+        $error = false;
+        if (!$icode) {
+            echo "Item Code required";
+            $error = true;
+        }
+        else if (!$iname) {
+            echo "Item Name required";
+            $error = true;
+        }
+        else if (!$price) {
+            echo "Unit Price required";
+            $error = true;
+        }
+        else {
+            $sql = "select * from product where itemcode = '$icode'";
+            $result = $conn->query($sql);
+            if ($result->num_rows>0) {
+                echo "Item code already exists";
+                $error = true;
+            }
+        }
+        if (!$error) {
+            $sql = "insert into product values('$icode','$iname',$price)";
+            if ($conn->query($sql) =  = TRUE) {
+                echo "Product added";
+            }
+            else {
+                echo "Error:".sql."<br>".$conn->error;
+            }
+        }
+    }
+?>
+<form action = "" method = "post">
+    <h1>Add to Product List</h1>
+    <table>
+        <tr> <td> Item Code </td>
+            <td> <input type = "text" name = "itemcode"> </td> </tr>
+        <tr> <td> Item Name </td>
+            <td> <input type = "text" name = "itemname"> </td> </tr>
+        <tr> <td> Unit Price </td>
+            <td> <input type = "number" name = "unitprice"> </td> </tr>
+        <tr> td> </td>
+            <td> <input type = "submit" name = "add" value = "Add">  </td> </tr>
+    </table>
+    <a href = "display.php">Show all products</a>
+</form>
+display.php
+<form action = "" method = "post">
+    <h1>Product List</h1>
+    <table border = "1">
+        <tr> <th>Item Code</th>
+            <th>Item Name</th>
+            <th>Unit Price</th>
+        </tr>
+        <?php
+            include('connection.php');
+            $sql = "select * from product";
+            $result = $conn->query($sql);
+            if ($result->num_rows>0 {
+                while($row = $result->fetch_assoc() {
+                    $itemcode = $row["itemcode"];
+                    $itemname = $row["itemname"];
+                    $unitprice = $row["unitprice"];
+                    echo "<tr> td>$itemcode </td>";
+                    echo "<td> $itemname </td>";
+                    echo "<td> $unitprice </td></tr>";
+                }
+            }
+            els {
+                echo "No products";
+            }
+        ?>
+    </table>
+</form>

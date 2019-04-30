@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>Inline CSS Example</title>
+</head>
+<body>
+<h2 style="color:#FF0000; text-align:center">MES KeVeeYam College Valanchery</h2>
+<div style=" border-bottom-style:dashed; text-align:center; background-color:#999999">
+<b>Official Address</b><br /><br />
+MES KeVeeYam College,Valanchery<br/>
+Malappuram District,Kerala<br />
+Pin : 676552
+</div>
+</body>
+</html>
